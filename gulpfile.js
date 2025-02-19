@@ -1,44 +1,78 @@
-const gulp = require('gulp');
-const sass = require('gulp-sass')(require('sass'));
-const browserSync = require('browser-sync').create();
-const webpack = require('webpack-stream');
-const babel = require('gulp-babel');
+import gulp from "gulp";
+import * as dartSass from "sass";
+import gulpSass from "gulp-sass";
+import browserSync from "browser-sync";
+import webpackStream from "webpack-stream";
+import babel from "gulp-babel";
+import imagemin from "gulp-imagemin";
+import fs from "fs";
 
-// Compile SCSS to CSS
+const sass = gulpSass(dartSass);
+const bs = browserSync.create();
+
+function ensureImagesFolder(cb) {
+  const imgPath = "dist/images";
+  if (!fs.existsSync(imgPath)) {
+    fs.mkdirSync(imgPath, { recursive: true });
+    console.log("Folderul dist/images a fost creat.");
+  }
+  cb();
+}
+
+function images(cb) {
+  ensureImagesFolder(() => {
+    gulp
+      .src("images/**/*.{jpg,png,svg,gif,webp}")
+      .pipe(imagemin())
+      .pipe(gulp.dest("dist/images"))
+      .on("end", () => {
+        console.log("Imaginile au fost copiate cu succes!");
+        cb();
+      });
+  });
+}
+
 function styles() {
-    return gulp.src('src/scss/style.scss')
-        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
-        .pipe(gulp.dest('dist/css'))
-        .pipe(browserSync.stream());
+  return gulp
+    .src("src/scss/style.scss")
+    .pipe(sass({ outputStyle: "compressed" }).on("error", sass.logError))
+    .pipe(gulp.dest("dist/css"))
+    .pipe(bs.stream());
 }
 
-// Process JavaScript with Webpack and Babel
 function scripts() {
-    return gulp.src('src/js/main.js')
-        .pipe(webpack({ mode: 'production' }))
-        .pipe(babel({ presets: ['@babel/preset-env'] }))
-        .pipe(gulp.dest('dist/js'))
-        .pipe(browserSync.stream());
+  return gulp
+    .src("src/js/main.js")
+    .pipe(
+      webpackStream({
+        mode: "production",
+      })
+    )
+    .pipe(babel({ presets: ["@babel/preset-env"] }))
+    .pipe(gulp.dest("dist/js"))
+    .pipe(bs.stream());
 }
 
-// Copy HTML to dist
 function html() {
-    return gulp.src('src/index.html')
-        .pipe(gulp.dest('dist'))
-        .pipe(browserSync.stream());
+  return gulp.src("src/index.html").pipe(gulp.dest("dist")).pipe(bs.stream());
 }
 
-// Watch files and reload browser
-function watch() {
-    browserSync.init({ server: { baseDir: 'dist' } });
-    gulp.watch('src/scss/**/*.scss', styles);
-    gulp.watch('src/js/**/*.js', scripts);
-    gulp.watch('src/index.html', html);
+function serve() {
+  bs.init({
+    server: {
+      baseDir: ["dist", "public"],
+    },
+  });
+
+  gulp.watch("src/scss/**/*.scss", styles);
+  gulp.watch("src/js/**/*.js", scripts);
+  gulp.watch("src/index.html", html);
+  gulp.watch("images/**/*.{jpg,png,svg,gif,webp}", images);
 }
 
-// Build task
-const build = gulp.series(gulp.parallel(styles, scripts, html));
-
-// Default task
-exports.default = gulp.series(build, watch);
-exports.build = build;
+const build = gulp.series(
+  ensureImagesFolder,
+  gulp.parallel(styles, scripts, html, images)
+);
+export default gulp.series(build, serve);
+export { build };
