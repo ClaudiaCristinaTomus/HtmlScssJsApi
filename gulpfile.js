@@ -1,4 +1,4 @@
-import gulp from "gulp"; 
+import gulp from "gulp";
 import * as dartSass from "sass";
 import gulpSass from "gulp-sass";
 import browserSync from "browser-sync";

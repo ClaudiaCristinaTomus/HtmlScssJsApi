@@ -3,10 +3,12 @@ body {
     padding: 0;
     overflow-x: hidden;
 }
+
 .wrapper {
     overflow-x: hidden;
     position: relative;
 }
+
 * {
     box-sizing: border-box;
 }
@@ -15,37 +17,40 @@ body {
 .container {
     position: relative;
     display: flex;
-    width: 700vw; 
+    width: 700vw;
+
     section {
         width: 100vw;
         height: 100vh;
-        position: relative; 
+        position: relative;
         overflow: hidden;
     }
-    
+
 }
+
 .scroll-arrow {
-    position: absolute; 
-    bottom: 5vh; 
+    position: fixed;
+    bottom: 5vh;
     left: 50%;
     transform: translateX(-50%);
     width: 50px;
     height: auto;
     cursor: pointer;
-    z-index: 10; 
+    z-index: 1000;
     animation: bounce 1.5s infinite;
 }
+
 
 /* ------------mobile - swiper------ */
 .swiper {
     width: 100vw;
     height: 100vh;
     position: relative;
-    display: none; 
+    display: none;
 }
 
 .swiper-slide {
-    position: absolute; 
+    position: absolute;
     width: 100%;
     height: 100%;
     display: flex;
@@ -73,7 +78,7 @@ body {
 
 .scroll-arrow {
     position: fixed;
-    bottom: 5vh; 
+    bottom: 5vh;
     left: 50%;
     transform: translateX(-50%);
     width: 50px;
@@ -85,8 +90,15 @@ body {
 
 
 @keyframes bounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(-10px); }
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(-10px);
+    }
 }
 
 
@@ -94,7 +106,8 @@ body {
     bottom: 20px !important;
 }
 
-.swiper-button-next, .swiper-button-prev {
+.swiper-button-next,
+.swiper-button-prev {
     color: white;
 }
 

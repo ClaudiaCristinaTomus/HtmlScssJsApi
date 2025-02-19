@@ -6885,7 +6885,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
         return "\n                <section class=\"slide\">\n                    <img src=\"".concat(e.image, "\" alt=\"").concat(e.title, "\" class=\"slide-image\">\n                    <div class=\"slide-content\">\n                        <h1 class=\"anim\">").concat(e.title, "</h1>\n                        <p class=\"anim\">").concat(e.description, "</p>\n                    </div>\n                </section>\n            ");
       }).join("");
       var _e51 = Wn.utils.toArray(".slide");
-      Wn.to(_e51, {
+      if (Wn.to(_e51, {
         xPercent: -100 * (_e51.length - 1),
         ease: "power1.out",
         scrollTrigger: {
@@ -6894,17 +6894,18 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
           scrub: 2.5,
           end: "+=300%"
         }
-      });
-      var _r20 = document.createElement("img");
-      _r20.src = "/images/ScrollPrompt.png", _r20.alt = "Scroll Down", _r20.classList.add("scroll-arrow"), document.body.appendChild(_r20), _r20.addEventListener("click", function () {
-        window.scrollTo({
-          top: window.innerHeight,
-          behavior: "smooth"
+      }), t) {
+        var _e52 = document.createElement("img");
+        _e52.src = "/images/ScrollPrompt.png", _e52.alt = "Scroll Down", _e52.classList.add("scroll-arrow"), t.appendChild(_e52), console.log("Săgeata a fost adăugată:", _e52), _e52.addEventListener("click", function () {
+          window.scrollTo({
+            top: window.innerHeight,
+            behavior: "smooth"
+          });
         });
-      });
+      }
     }
   }), document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-    var e, _t30, _r21;
+    var e, _t30, _r20;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
@@ -6921,8 +6922,8 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
           _context.next = 8;
           return _t30.json();
         case 8:
-          _r21 = _context.sent;
-          e.innerHTML = _r21.products.map(function (e) {
+          _r20 = _context.sent;
+          e.innerHTML = _r20.products.map(function (e) {
             return "\n                <a href=\"#\" class=\"scroller-item\">\n                    <img src=\"".concat(e.thumbnail, "\" alt=\"").concat(e.title, "\">\n                    <h3>").concat(e.title, "</h3>\n                </a>\n            ");
           }).join("");
           _context.next = 15;
