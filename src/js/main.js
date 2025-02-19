@@ -1,5 +1,5 @@
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger.js';
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger.js";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,16 +25,28 @@ container.innerHTML = validSlides.map(slide => `
     </section>
 `).join("");
 
-
 const sections = gsap.utils.toArray(".slide");
 
-let scrollTween = gsap.to(sections, {
+gsap.to(sections, {
     xPercent: -100 * (sections.length - 1),
     ease: "power1.out",
     scrollTrigger: {
         trigger: ".container",
         pin: true,
-        scrub: 2.5, 
+        scrub: 2.5,
         end: "+=300%",
     }
+});
+
+const arrow = document.createElement("img");
+arrow.src = "/images/arrow-down.svg";  
+arrow.alt = "Scroll Down";
+arrow.classList.add("scroll-arrow");
+document.body.appendChild(arrow);
+
+arrow.addEventListener("click", () => {
+    window.scrollTo({
+        top: window.innerHeight,
+        behavior: "smooth"
+    });
 });

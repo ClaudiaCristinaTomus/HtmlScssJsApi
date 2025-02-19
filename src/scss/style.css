@@ -1,29 +1,72 @@
-/* SCSS - Hero Section */
-.hero {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.wrapper {
+  overflow-x: hidden;
   position: relative;
 }
 
-.swiper-container {
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  width: 700vw;
+}
+.container section {
   width: 100vw;
   height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
 
-.swiper-slide {
+.slide {
+  position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-  background-size: cover;
-  background-position: center;
+  justify-content: center;
 }
 
-.scroll-down {
+.slide-image {
   position: absolute;
-  bottom: 20px;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.slide-content {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: black;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.scroll-arrow {
+  position: fixed;
+  bottom: 5vh;
   left: 50%;
   transform: translateX(-50%);
+  width: 50px;
+  height: auto;
   cursor: pointer;
+  z-index: 2;
+  animation: bounce 1.5s infinite;
 }
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}/*# sourceMappingURL=style.css.map */
