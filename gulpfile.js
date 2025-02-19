@@ -1,4 +1,4 @@
-import gulp from "gulp";
+import gulp from "gulp"; 
 import * as dartSass from "sass";
 import gulpSass from "gulp-sass";
 import browserSync from "browser-sync";
@@ -46,6 +46,14 @@ function scripts() {
     .pipe(
       webpackStream({
         mode: "production",
+        module: {
+          rules: [
+            {
+              test: /\.css$/i,
+              use: ["style-loader", "css-loader"],
+            },
+          ],
+        },
       })
     )
     .pipe(babel({ presets: ["@babel/preset-env"] }))
