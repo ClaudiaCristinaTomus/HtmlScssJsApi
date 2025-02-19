@@ -98,3 +98,26 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 });
+
+
+// carousel scroller
+document.addEventListener("DOMContentLoaded", async () => {
+    const scrollerWrapper = document.querySelector(".scroller-wrapper");
+
+    if (scrollerWrapper) {
+        try {
+            const response = await fetch("https://dummyjson.com/products?limit=10");
+            const data = await response.json();
+
+            scrollerWrapper.innerHTML = data.products.map(product => `
+                <a href="#" class="scroller-item">
+                    <img src="${product.thumbnail}" alt="${product.title}">
+                    <h3>${product.title}</h3>
+                </a>
+            `).join("");
+        } catch (error) {
+            console.error("Eroare la preluarea produselor:", error);
+        }
+    }
+});
+
