@@ -6850,7 +6850,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
     description: "Sed do eiusmod...",
     image: "/images/heroImage.jpg"
   }, {
-    title: "Slide 4",
+    title: "",
     description: "Tempor incididunt...",
     image: "/images/heroImage.jpg"
   }].filter(function (e) {
@@ -6875,11 +6875,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
         crossFade: !0
       },
       observer: !0,
-      observeParents: !0,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev"
-      }
+      observeParents: !0
     });else if (r && (r.style.display = "none"), t) {
       t.style.display = "flex", t.innerHTML = Yl.map(function (e) {
         return "\n                <section class=\"slide\">\n                    <img src=\"".concat(e.image, "\" alt=\"").concat(e.title, "\" class=\"slide-image\">\n                    <div class=\"slide-content\">\n                        <h1 class=\"anim\">").concat(e.title, "</h1>\n                        <p class=\"anim\">").concat(e.description, "</p>\n                    </div>\n                </section>\n            ");

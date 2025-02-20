@@ -85,21 +85,8 @@ body {
     height: auto;
     cursor: pointer;
     z-index: 2;
-    animation: bounce 1.5s infinite;
 }
 
-
-@keyframes bounce {
-
-    0%,
-    100% {
-        transform: translateX(-50%) translateY(0);
-    }
-
-    50% {
-        transform: translateX(-50%) translateY(-10px);
-    }
-}
 
 
 .swiper-pagination {
@@ -155,9 +142,36 @@ body {
 
 .scroller-item h3 {
     position: absolute;
-    bottom: 10px;
+    padding:20px 0;
+    top: 10px;
     left: 15px;
-    color: white;
+    color: rgb(204, 129, 129);
     font-size: 18px;
     font-weight: bold;
+}
+@media (max-width: 768px) {
+    .scroller-item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .scroller-subtitle {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.8);
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #333;
+        z-index: 10;
+    }
+
+    .scroller-item img {
+        margin-top: 90px;
+    }
 }

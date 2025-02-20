@@ -26,7 +26,7 @@ const slidesData = [
     image: "/images/heroImage.jpg",
   },
   {
-    title: "Slide 4",
+    title: "",
     description: "Tempor incididunt...",
     image: "/images/heroImage.jpg",
   },
@@ -71,10 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
       fadeEffect: { crossFade: true },
       observer: true,
       observeParents: true,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
     });
   } else {
     if (swiperContainer) swiperContainer.style.display = "none";
