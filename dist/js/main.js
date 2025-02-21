@@ -6840,19 +6840,19 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
   var Yl = [{
     title: "Slide 1",
     description: "Lorem ipsum...",
-    image: "/images/heroImage.jpg"
+    image: "images/heroImage.jpg"
   }, {
     title: "Slide 2",
     description: "Consectetur adipiscing...",
-    image: "/images/heroImage.jpg"
+    image: "images/heroImage.jpg"
   }, {
     title: "Slide 3",
     description: "Sed do eiusmod...",
-    image: "/images/heroImage.jpg"
+    image: "images/heroImage.jpg"
   }, {
     title: "",
     description: "Tempor incididunt...",
-    image: "/images/heroImage.jpg"
+    image: "images/heroImage.jpg"
   }].filter(function (e) {
     return "" !== e.title.trim();
   });
@@ -6933,5 +6933,54 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
           return _context.stop();
       }
     }, _callee, null, [[2, 12]]);
+  }))), document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+    var e, t, r, _n26, _i12, _s12, _a7, _o9;
+    return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+      while (1) switch (_context2.prev = _context2.next) {
+        case 0:
+          e = document.querySelector(".rotator-images"), t = document.querySelector(".rotator-pagination"), r = document.querySelector(".rotator-description");
+          _context2.prev = 1;
+          _context2.next = 4;
+          return fetch("https://dummyjson.com/products?limit=4");
+        case 4:
+          _n26 = _context2.sent;
+          _context2.next = 7;
+          return _n26.json();
+        case 7:
+          _i12 = _context2.sent.products;
+          if (!(0 === _i12.length)) {
+            _context2.next = 10;
+            break;
+          }
+          return _context2.abrupt("return");
+        case 10:
+          e.innerHTML = _i12.map(function (e, t) {
+            return "\n              <div class=\"rotator-image ".concat(0 === t ? "active" : "", "\">\n                  <img src=\"images/child").concat(t + 1, ".jpg\" alt=\"").concat(e.title, "\">\n                  <div class=\"rotator-title\">").concat(e.title, "</div>\n                  <div class=\"rotator-arrow\">\n                      <a href=\"\"><img src=\"images/Arrow.png\" alt=\"Arrow\"></a>\n                  </div>\n              </div>\n          ");
+          }).join(""), t.innerHTML = _i12.map(function (e, t) {
+            return "\n              <div class=\"pagination-dot ".concat(0 === t ? "active" : "", "\" data-index=\"").concat(t, "\"></div>\n          ");
+          }).join(""), r.textContent = _i12[0].description;
+          _s12 = document.querySelectorAll(".rotator-image"), _a7 = document.querySelectorAll(".pagination-dot");
+          _o9 = 0;
+          _a7.forEach(function (e) {
+            e.addEventListener("click", function () {
+              var t;
+              t = parseInt(e.dataset.index), _s12.forEach(function (e, r) {
+                return e.classList.toggle("active", r === t);
+              }), _a7.forEach(function (e, r) {
+                return e.classList.toggle("active", r === t);
+              }), r.textContent = _i12[t].description, _o9 = t;
+            });
+          });
+          _context2.next = 19;
+          break;
+        case 16:
+          _context2.prev = 16;
+          _context2.t0 = _context2["catch"](1);
+          console.error("Eroare la preluarea produselor:", _context2.t0);
+        case 19:
+        case "end":
+          return _context2.stop();
+      }
+    }, _callee2, null, [[1, 16]]);
   })));
 })();

@@ -142,13 +142,14 @@ body {
 
 .scroller-item h3 {
     position: absolute;
-    padding:20px 0;
+    padding: 20px 0;
     top: 10px;
     left: 15px;
     color: rgb(204, 129, 129);
     font-size: 18px;
     font-weight: bold;
 }
+
 @media (max-width: 768px) {
     .scroller-item {
         position: relative;
@@ -175,3 +176,183 @@ body {
         margin-top: 90px;
     }
 }
+
+
+/*-----rotator-----*/
+.rotator {
+    margin: 100px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    position: relative;
+    width: 100%;
+    margin: auto;
+}
+
+.rotator-images {
+    width: 60%;
+    height: 400px;
+    position: relative;
+}
+
+.rotator-image {
+    position: absolute;
+    width: 90%;
+    margin: 0 auto;
+    padding: 200px 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.rotator-image.active {
+    opacity: 1;
+}
+
+.rotator-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+
+.rotator-title {
+    position: absolute;
+    top: 80%;
+    left: 20px;
+    color: rgb(33, 31, 31);
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+/* -----sageata din dreapta imaginii -----*/
+.rotator-arrow {
+    position: absolute;
+    top: 85%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+.rotator-arrow a img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+
+.rotator-pagination {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.pagination-dot {
+    width: 12px;
+    height: 12px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.pagination-dot.active {
+    background-color: #8B6F4E;
+    transform: scale(1.2);
+}
+
+
+.rotator-content {
+    width: 30%;
+    text-align: center;
+}
+
+.rotator-description {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.4;
+    min-height: 50px;
+}
+
+/* ----rotator mobile-----*/
+@media (max-width: 768px) {
+    .rotator {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .rotator-images {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        position: static;
+    }
+
+    .rotator-image {
+        position: relative;
+        width: 90%;
+        margin: 0 auto;
+        padding: 200px 10px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        background: white;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        opacity: 1 !important;
+        display: block !important;
+    }
+
+    .rotator-image img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    .rotator-title {
+        font-size: 16px;
+        position: absolute;
+        top: 85%;
+        left: 10px;
+        color: rgb(18, 17, 17);
+        max-width: 70%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .rotator-arrow {
+        position: absolute;
+        top: 90%;
+        right: 10px;
+        transform: translateY(-50%);
+    }
+
+    .rotator-arrow a img {
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+    }
+
+    .rotator-pagination,
+    .rotator-description {
+        display: none;
+    }
+
+
+    .rotator-image.active {
+        opacity: 1;
+        display: block;
+    }
+}
+
