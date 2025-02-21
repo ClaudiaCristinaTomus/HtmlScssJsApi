@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .map(
           (slide) => `
                 <div class="swiper-slide">
-                    <img src="${slide.image}" alt="${slide.title}" class="slide-image">
+                    <img data-src="${slide.image}" alt="${slide.title}" class="slide-image lazyload">
                     <div class="slide-content">
                         <h1 class="anim">${slide.title}</h1>
                         <p class="anim">${slide.description}</p>
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .map(
           (slide) => `
                 <section class="slide">
-                    <img src="${slide.image}" alt="${slide.title}" class="slide-image">
+                    <img data-src="${slide.image}" alt="${slide.title}" class="slide-image lazyload">
                     <div class="slide-content">
                         <h1 class="anim">${slide.title}</h1>
                         <p class="anim">${slide.description}</p>
@@ -103,9 +103,9 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       if (container) {
         const arrow = document.createElement("img");
-        arrow.src = "/images/ScrollPrompt.png";
+        arrow.src = "../images/ScrollPrompt.png";
         arrow.alt = "Scroll Down";
-        arrow.classList.add("scroll-arrow");
+        arrow.classList.add('scroll-arrow', 'lazyload');
 
         container.appendChild(arrow);
 
@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         .map(
           (product) => `
                 <a href="#" class="scroller-item">
-                    <img src="${product.thumbnail}" alt="${product.title}">
+                    <img data-src="${product.thumbnail}" class="lazyload" alt="${product.title}">
                     <h3>${product.title}</h3>
                 </a>
             `
@@ -164,12 +164,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       .map(
         (product, index) => `
               <div class="rotator-image ${index === 0 ? "active" : ""}">
-                  <img src="images/child${index + 1}.jpg" alt="${
+                  <img data-src="../images/child${index + 1}.jpg" class="lazyload" alt="${
           product.title
         }">
                   <div class="rotator-title">${product.title}</div>
                   <div class="rotator-arrow">
-                      <a href=""><img src="images/Arrow.png" alt="Arrow"></a>
+                      <a href=""><img data-src="../images/Arrow.png" alt="Arrow" class="lazyload"></a>
                   </div>
               </div>
           `

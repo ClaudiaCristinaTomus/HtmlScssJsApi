@@ -6862,7 +6862,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
       r = document.querySelector(".swiper"),
       n = document.querySelector(".swiper .swiper-wrapper");
     if (e) r.style.display = "block", t && (t.style.display = "none"), n && (n.innerHTML = Yl.map(function (e) {
-      return "\n                <div class=\"swiper-slide\">\n                    <img src=\"".concat(e.image, "\" alt=\"").concat(e.title, "\" class=\"slide-image\">\n                    <div class=\"slide-content\">\n                        <h1 class=\"anim\">").concat(e.title, "</h1>\n                        <p class=\"anim\">").concat(e.description, "</p>\n                    </div>\n                </div>\n            ");
+      return "\n                <div class=\"swiper-slide\">\n                    <img data-src=\"".concat(e.image, "\" alt=\"").concat(e.title, "\" class=\"slide-image lazyload\">\n                    <div class=\"slide-content\">\n                        <h1 class=\"anim\">").concat(e.title, "</h1>\n                        <p class=\"anim\">").concat(e.description, "</p>\n                    </div>\n                </div>\n            ");
     }).join("")), new hl(".swiper", {
       modules: [ml, wl, yl],
       effect: "fade",
@@ -6878,7 +6878,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
       observeParents: !0
     });else if (r && (r.style.display = "none"), t) {
       t.style.display = "flex", t.innerHTML = Yl.map(function (e) {
-        return "\n                <section class=\"slide\">\n                    <img src=\"".concat(e.image, "\" alt=\"").concat(e.title, "\" class=\"slide-image\">\n                    <div class=\"slide-content\">\n                        <h1 class=\"anim\">").concat(e.title, "</h1>\n                        <p class=\"anim\">").concat(e.description, "</p>\n                    </div>\n                </section>\n            ");
+        return "\n                <section class=\"slide\">\n                    <img data-src=\"".concat(e.image, "\" alt=\"").concat(e.title, "\" class=\"slide-image lazyload\">\n                    <div class=\"slide-content\">\n                        <h1 class=\"anim\">").concat(e.title, "</h1>\n                        <p class=\"anim\">").concat(e.description, "</p>\n                    </div>\n                </section>\n            ");
       }).join("");
       var _e51 = Wn.utils.toArray(".slide");
       if (Wn.to(_e51, {
@@ -6892,7 +6892,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
         }
       }), t) {
         var _e52 = document.createElement("img");
-        _e52.src = "/images/ScrollPrompt.png", _e52.alt = "Scroll Down", _e52.classList.add("scroll-arrow"), t.appendChild(_e52), console.log("Săgeata a fost adăugată:", _e52), _e52.addEventListener("click", function () {
+        _e52.src = "../images/ScrollPrompt.png", _e52.alt = "Scroll Down", _e52.classList.add("scroll-arrow", "lazyload"), t.appendChild(_e52), console.log("Săgeata a fost adăugată:", _e52), _e52.addEventListener("click", function () {
           window.scrollTo({
             top: window.innerHeight,
             behavior: "smooth"
@@ -6920,7 +6920,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
         case 8:
           _r20 = _context.sent;
           e.innerHTML = _r20.products.map(function (e) {
-            return "\n                <a href=\"#\" class=\"scroller-item\">\n                    <img src=\"".concat(e.thumbnail, "\" alt=\"").concat(e.title, "\">\n                    <h3>").concat(e.title, "</h3>\n                </a>\n            ");
+            return "\n                <a href=\"#\" class=\"scroller-item\">\n                    <img data-src=\"".concat(e.thumbnail, "\" class=\"lazyload\" alt=\"").concat(e.title, "\">\n                    <h3>").concat(e.title, "</h3>\n                </a>\n            ");
           }).join("");
           _context.next = 15;
           break;
@@ -6955,7 +6955,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
           return _context2.abrupt("return");
         case 10:
           e.innerHTML = _i12.map(function (e, t) {
-            return "\n              <div class=\"rotator-image ".concat(0 === t ? "active" : "", "\">\n                  <img src=\"images/child").concat(t + 1, ".jpg\" alt=\"").concat(e.title, "\">\n                  <div class=\"rotator-title\">").concat(e.title, "</div>\n                  <div class=\"rotator-arrow\">\n                      <a href=\"\"><img src=\"images/Arrow.png\" alt=\"Arrow\"></a>\n                  </div>\n              </div>\n          ");
+            return "\n              <div class=\"rotator-image ".concat(0 === t ? "active" : "", "\">\n                  <img data-src=\"../images/child").concat(t + 1, ".jpg\" class=\"lazyload\" alt=\"").concat(e.title, "\">\n                  <div class=\"rotator-title\">").concat(e.title, "</div>\n                  <div class=\"rotator-arrow\">\n                      <a href=\"\"><img data-src=\"../images/Arrow.png\" alt=\"Arrow\" class=\"lazyload\"></a>\n                  </div>\n              </div>\n          ");
           }).join(""), t.innerHTML = _i12.map(function (e, t) {
             return "\n              <div class=\"pagination-dot ".concat(0 === t ? "active" : "", "\" data-index=\"").concat(t, "\"></div>\n          ");
           }).join(""), r.textContent = _i12[0].description;
