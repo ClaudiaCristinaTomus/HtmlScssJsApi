@@ -1,4 +1,3 @@
-
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger.js";
 import Swiper from "swiper";
@@ -123,7 +122,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-
 document.addEventListener("DOMContentLoaded", async () => {
   const scrollerWrapper = document.querySelector(".scroller-wrapper");
 
@@ -148,9 +146,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-
 /*----rotator-----*/
-
 
 document.addEventListener("DOMContentLoaded", async () => {
   const rotatorImagesContainer = document.querySelector(".rotator-images");
@@ -158,56 +154,58 @@ document.addEventListener("DOMContentLoaded", async () => {
   const rotatorDescription = document.querySelector(".rotator-description");
 
   try {
-      const response = await fetch("https://dummyjson.com/products?limit=4");
-      const data = await response.json();
-      const products = data.products;
+    const response = await fetch("https://dummyjson.com/products?limit=4");
+    const data = await response.json();
+    const products = data.products;
 
-      if (products.length === 0) return;
+    if (products.length === 0) return;
 
-      rotatorImagesContainer.innerHTML = products
-          .map(
-              (product, index) => `
+    rotatorImagesContainer.innerHTML = products
+      .map(
+        (product, index) => `
               <div class="rotator-image ${index === 0 ? "active" : ""}">
-                  <img src="images/child${index + 1}.jpg" alt="${product.title}">
+                  <img src="images/child${index + 1}.jpg" alt="${
+          product.title
+        }">
                   <div class="rotator-title">${product.title}</div>
                   <div class="rotator-arrow">
                       <a href=""><img src="images/Arrow.png" alt="Arrow"></a>
                   </div>
               </div>
           `
-          )
-          .join("");
+      )
+      .join("");
 
-      
-      paginationContainer.innerHTML = products
-          .map(
-              (_, index) => `
-              <div class="pagination-dot ${index === 0 ? "active" : ""}" data-index="${index}"></div>
+    paginationContainer.innerHTML = products
+      .map(
+        (_, index) => `
+              <div class="pagination-dot ${
+                index === 0 ? "active" : ""
+              }" data-index="${index}"></div>
           `
-          )
-          .join("");
+      )
+      .join("");
 
-      rotatorDescription.textContent = products[0].description;
+    rotatorDescription.textContent = products[0].description;
 
-      const images = document.querySelectorAll(".rotator-image");
-      const dots = document.querySelectorAll(".pagination-dot");
+    const images = document.querySelectorAll(".rotator-image");
+    const dots = document.querySelectorAll(".pagination-dot");
 
-      let currentIndex = 0;
+    let currentIndex = 0;
 
-      function updateRotator(index) {
-          images.forEach((img, i) => img.classList.toggle("active", i === index));
-          dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
-          rotatorDescription.textContent = products[index].description;
-          currentIndex = index;
-      }
+    function updateRotator(index) {
+      images.forEach((img, i) => img.classList.toggle("active", i === index));
+      dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
+      rotatorDescription.textContent = products[index].description;
+      currentIndex = index;
+    }
 
-      dots.forEach((dot) => {
-          dot.addEventListener("click", () => {
-              updateRotator(parseInt(dot.dataset.index));
-          });
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        updateRotator(parseInt(dot.dataset.index));
       });
+    });
   } catch (error) {
-      console.error("Eroare la preluarea produselor:", error);
+    console.error("Eroare la preluarea produselor:", error);
   }
 });
-
