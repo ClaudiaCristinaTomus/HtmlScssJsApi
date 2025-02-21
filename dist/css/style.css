@@ -37,7 +37,6 @@ body {
   animation: bounce 1.5s infinite;
 }
 
-/* ------------mobile - swiper------ */
 .swiper {
   width: 100vw;
   height: 100vh;
@@ -92,7 +91,6 @@ body {
   color: white;
 }
 
-/*---------ex 2-------------*/
 .scroller-container {
   max-width: 800px;
   margin: 50px auto;
@@ -165,7 +163,6 @@ body {
     margin-top: 90px;
   }
 }
-/*-----rotator-----*/
 .rotator {
   margin: 100px 20px;
   display: flex;
@@ -264,7 +261,6 @@ body {
   min-height: 50px;
 }
 
-/* ----rotator mobile-----*/
 @media (max-width: 768px) {
   .rotator {
     display: flex;
@@ -293,12 +289,6 @@ body {
     opacity: 1 !important;
     display: block !important;
   }
-  .rotator-image img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 5px;
-  }
   .rotator-title {
     font-size: 16px;
     position: absolute;
@@ -310,23 +300,8 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .rotator-arrow {
-    position: absolute;
-    top: 90%;
-    right: 10px;
-    transform: translateY(-50%);
-  }
-  .rotator-arrow a img {
-    width: 35px;
-    height: 35px;
-    cursor: pointer;
-  }
   .rotator-pagination,
   .rotator-description {
     display: none;
-  }
-  .rotator-image.active {
-    opacity: 1;
-    display: block;
   }
 }

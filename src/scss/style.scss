@@ -1,3 +1,5 @@
+@use 'mixins' as *;
+
 body {
     margin: 0;
     padding: 0;
@@ -13,7 +15,6 @@ body {
     box-sizing: border-box;
 }
 
-
 .container {
     position: relative;
     display: flex;
@@ -25,7 +26,6 @@ body {
         position: relative;
         overflow: hidden;
     }
-
 }
 
 .scroll-arrow {
@@ -40,8 +40,6 @@ body {
     animation: bounce 1.5s infinite;
 }
 
-
-/* ------------mobile - swiper------ */
 .swiper {
     width: 100vw;
     height: 100vh;
@@ -87,8 +85,6 @@ body {
     z-index: 2;
 }
 
-
-
 .swiper-pagination {
     bottom: 20px !important;
 }
@@ -97,10 +93,6 @@ body {
 .swiper-button-prev {
     color: white;
 }
-
-
-
-/*---------ex 2-------------*/
 
 .scroller-container {
     max-width: 800px;
@@ -150,7 +142,7 @@ body {
     font-weight: bold;
 }
 
-@media (max-width: 768px) {
+@include mobile {
     .scroller-item {
         position: relative;
         display: flex;
@@ -177,8 +169,6 @@ body {
     }
 }
 
-
-/*-----rotator-----*/
 .rotator {
     margin: 100px 20px;
     display: flex;
@@ -280,8 +270,7 @@ body {
     min-height: 50px;
 }
 
-/* ----rotator mobile-----*/
-@media (max-width: 768px) {
+@include mobile {
     .rotator {
         display: flex;
         flex-direction: column;
@@ -312,13 +301,6 @@ body {
         display: block !important;
     }
 
-    .rotator-image img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        border-radius: 5px;
-    }
-
     .rotator-title {
         font-size: 16px;
         position: absolute;
@@ -331,28 +313,8 @@ body {
         text-overflow: ellipsis;
     }
 
-    .rotator-arrow {
-        position: absolute;
-        top: 90%;
-        right: 10px;
-        transform: translateY(-50%);
-    }
-
-    .rotator-arrow a img {
-        width: 35px;
-        height: 35px;
-        cursor: pointer;
-    }
-
     .rotator-pagination,
     .rotator-description {
         display: none;
     }
-
-
-    .rotator-image.active {
-        opacity: 1;
-        display: block;
-    }
 }
-
