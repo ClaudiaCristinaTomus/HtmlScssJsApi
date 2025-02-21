@@ -81,6 +81,7 @@ function serve() {
   gulp.watch("src/js/**/*.js", scripts);
   gulp.watch("src/index.html", html);
   gulp.watch("images/**/*.{jpg,png,svg,gif,webp}", images);
+  gulp.watch("src/fonts/**/*.{ttf,otf,woff,woff2}", fonts);
 }
 
 const build = gulp.series(
