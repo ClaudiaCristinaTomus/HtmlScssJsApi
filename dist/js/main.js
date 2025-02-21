@@ -346,8 +346,8 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
     },
     N = "function" == typeof ArrayBuffer && ArrayBuffer.isView || function () {},
     Y = Array.isArray,
-    V = /(?:-?\.?\d|\.)+/gi,
-    H = /[-+=.]*\d+[.e\-+]*\d*[e\-+]*\d*/g,
+    H = /(?:-?\.?\d|\.)+/gi,
+    V = /[-+=.]*\d+[.e\-+]*\d*[e\-+]*\d*/g,
     $ = /[-+=.]*\d+[.e-]*\d*[a-z%]*/g,
     j = /[-+=.]*\d+\.?\d*(?:e-|e\+)?\d*/gi,
     q = /[+-]=-?[.\d]+/,
@@ -519,10 +519,10 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
         e._zTime = -1e-8;
       }
     },
-    Ve = function Ve(e, t, r, n) {
+    He = function He(e, t, r, n) {
       return t.parent && ze(t), t._start = we((I(r) ? r : r || e !== l ? Qe(e, r, t) : e._time) + t._delay), t._end = we(t._start + (t.totalDuration() / Math.abs(t.timeScale()) || 0)), Pe(e, t, "_first", "_last", e._sort ? "_start" : 0), qe(t) || (e._recent = t), n || Ye(e, t), e._ts < 0 && Ne(e, e._tTime), e;
     },
-    He = function He(e, t) {
+    Ve = function Ve(e, t) {
       return (U.ScrollTrigger || K("scrollTrigger", t)) && U.ScrollTrigger.create(t, e);
     },
     $e = function $e(e, t, r, n, i) {
@@ -543,7 +543,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
       return a && !n && (e._time *= s / e._dur), e._dur = s, e._tDur = i ? i < 0 ? 1e10 : we(s * (i + 1) + e._rDelay * i) : s, a > 0 && !n && Ne(e, e._tTime = e._tDur * a), e.parent && Ge(e), r || Le(e.parent, e), e;
     },
     We = function We(e) {
-      return e instanceof Vt ? Le(e) : Xe(e, e._dur);
+      return e instanceof Ht ? Le(e) : Xe(e, e._dur);
     },
     Ue = {
       _start: 0,
@@ -673,7 +673,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
       });
     },
     pt = function pt(e) {
-      for (var t, r, n, i, s = 0, a = ""; ~(t = e.indexOf("random(", s));) n = e.indexOf(")", t), i = "[" === e.charAt(t + 7), r = e.substr(t + 7, n - t - 7).match(i ? X : V), a += e.substr(s, t - s) + dt(i ? r : +r[0], i ? 0 : +r[1], +r[2] || 1e-5), s = n + 1;
+      for (var t, r, n, i, s = 0, a = ""; ~(t = e.indexOf("random(", s));) n = e.indexOf(")", t), i = "[" === e.charAt(t + 7), r = e.substr(t + 7, n - t - 7).match(i ? X : H), a += e.substr(s, t - s) + dt(i ? r : +r[0], i ? 0 : +r[1], +r[2] || 1e-5), s = n + 1;
       return a + e.substr(s, e.length - s);
     },
     ut = function ut(e, t, r, n, i) {
@@ -777,10 +777,10 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
           if (e.length < 6 && (n = e.charAt(1), i = e.charAt(2), s = e.charAt(3), e = "#" + n + n + i + i + s + s + (5 === e.length ? e.charAt(4) + e.charAt(4) : "")), 9 === e.length) return [(f = parseInt(e.substr(1, 6), 16)) >> 16, f >> 8 & wt, f & wt, parseInt(e.substr(7), 16) / 255];
           f = [(e = parseInt(e.substr(1), 16)) >> 16, e >> 8 & wt, e & wt];
         } else if ("hsl" === e.substr(0, 3)) {
-          if (f = u = e.match(V), t) {
-            if (~e.indexOf("=")) return f = e.match(H), r && f.length < 4 && (f[3] = 1), f;
+          if (f = u = e.match(H), t) {
+            if (~e.indexOf("=")) return f = e.match(V), r && f.length < 4 && (f[3] = 1), f;
           } else a = +f[0] % 360 / 360, o = +f[1] / 100, n = 2 * (l = +f[2] / 100) - (i = l <= .5 ? l * (o + 1) : l + o - l * o), f.length > 3 && (f[3] *= 1), f[0] = yt(a + 1 / 3, n, i), f[1] = yt(a, n, i), f[2] = yt(a - 1 / 3, n, i);
-        } else f = e.match(V) || bt.transparent;
+        } else f = e.match(H) || bt.transparent;
         f = f.map(Number);
       }
       return t && !u && (n = f[0] / wt, i = f[1] / wt, s = f[2] / wt, l = ((d = Math.max(n, i, s)) + (c = Math.min(n, i, s))) / 2, d === c ? a = o = 0 : (p = d - c, o = l > .5 ? p / (2 - d - c) : p / (d + c), a = d === n ? (i - s) / p + (i < s ? 6 : 0) : d === i ? (s - n) / p + 2 : (n - i) / p + 4, a *= 60), f[0] = ~~(a + .5), f[1] = ~~(100 * o + .5), f[2] = ~~(100 * l + .5)), r && f.length < 4 && (f[3] = 1), f;
@@ -897,7 +897,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
       };
     },
     It = function e(t, r) {
-      for (var n, i = t._first; i;) i instanceof Vt ? e(i, r) : !i.vars.yoyoEase || i._yoyo && i._repeat || i._yoyo === r || (i.timeline ? e(i.timeline, r) : (n = i._ease, i._ease = i._yEase, i._yEase = n, i._yoyo = r)), i = i._next;
+      for (var n, i = t._first; i;) i instanceof Ht ? e(i, r) : !i.vars.yoyoEase || i._yoyo && i._repeat || i._yoyo === r || (i.timeline ? e(i.timeline, r) : (n = i._ease, i._ease = i._yEase, i._yEase = n, i._yoyo = r)), i = i._next;
     },
     Dt = function Dt(e, t) {
       return e && (L(e) ? e : kt[e] || function (e) {
@@ -1010,7 +1010,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
         var r = this._dp;
         if (r && r.smoothChildTiming && this._ts) {
           for (Ne(this, e), !r._dp || r.parent || Ye(r, this); r && r.parent;) r.parent._time !== r._start + (r._ts >= 0 ? r._tTime / r._ts : (r.totalDuration() - r._tTime) / -r._ts) && r.totalTime(r._tTime, !0), r = r.parent;
-          !this.parent && this._dp.autoRemoveChildren && (this._ts > 0 && e < this._tDur || this._ts < 0 && e > 0 || !this._tDur && !e) && Ve(this._dp, this, this._start - this._delay);
+          !this.parent && this._dp.autoRemoveChildren && (this._ts > 0 && e < this._tDur || this._ts < 0 && e > 0 || !this._tDur && !e) && He(this._dp, this, this._start - this._delay);
         }
         return (this._tTime !== e || !this._dur && !t || this._initted && Math.abs(this._zTime) === S || !e && !this._initted && (this.add || this._ptLookup)) && (this._ts || (this._pTime = e), xe(this, e, t)), this;
       }, t.time = function (e, t) {
@@ -1036,7 +1036,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
         if (arguments.length) {
           this._start = e;
           var t = this.parent || this._dp;
-          return t && (t._sort || !this.parent) && Ve(t, this, e - this._delay), this;
+          return t && (t._sort || !this.parent) && He(t, this, e - this._delay), this;
         }
         return this._start;
       }, t.endTime = function (e) {
@@ -1119,10 +1119,10 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
     _ps: !1,
     _rts: 1
   });
-  var Vt = function (e) {
+  var Ht = function (e) {
     function t(t, r) {
       var i;
-      return void 0 === t && (t = {}), (i = e.call(this, t) || this).labels = {}, i.smoothChildTiming = !!t.smoothChildTiming, i.autoRemoveChildren = !!t.autoRemoveChildren, i._sort = R(t.sortChildren), l && Ve(t.parent || l, n(i), r), t.reversed && i.reverse(), t.paused && i.paused(!0), t.scrollTrigger && He(n(i), t.scrollTrigger), i;
+      return void 0 === t && (t = {}), (i = e.call(this, t) || this).labels = {}, i.smoothChildTiming = !!t.smoothChildTiming, i.autoRemoveChildren = !!t.autoRemoveChildren, i._sort = R(t.sortChildren), l && He(t.parent || l, n(i), r), t.reversed && i.reverse(), t.paused && i.paused(!0), t.scrollTrigger && Ve(n(i), t.scrollTrigger), i;
     }
     i(t, e);
     var r = t.prototype;
@@ -1135,7 +1135,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
     }, r.set = function (e, t, r) {
       return t.duration = 0, t.parent = this, ke(t).repeatDelay || (t.repeat = 0), t.immediateRender = !!t.immediateRender, new Jt(e, t, Qe(this, r), 1), this;
     }, r.call = function (e, t, r) {
-      return Ve(this, Jt.delayedCall(0, e, t), r);
+      return He(this, Jt.delayedCall(0, e, t), r);
     }, r.staggerTo = function (e, t, r, n, i, s, a) {
       return r.duration = t, r.stagger = r.stagger || n, r.onComplete = s, r.onCompleteParams = a, r.parent = this, new Jt(e, r, Qe(this, i)), this;
     }, r.staggerFrom = function (e, t, r, n, i, s, a) {
@@ -1217,7 +1217,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
         if (!L(e)) return this;
         e = Jt.delayedCall(0, e);
       }
-      return this !== e ? Ve(this, e, t) : this;
+      return this !== e ? He(this, e, t) : this;
     }, r.getChildren = function (e, t, r, n) {
       void 0 === e && (e = !0), void 0 === t && (t = !0), void 0 === r && (r = !0), void 0 === n && (n = -A);
       for (var i = [], s = this._first; s;) s._start >= n && (s instanceof Jt ? t && i.push(s) : (r && i.push(s), e && i.push.apply(i, s.getChildren(!0, t, r)))), s = s._next;
@@ -1234,15 +1234,15 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
       return delete this.labels[e], this;
     }, r.addPause = function (e, t, r) {
       var n = Jt.delayedCall(0, t || te, r);
-      return n.data = "isPause", this._hasPause = 1, Ve(this, n, Qe(this, e));
+      return n.data = "isPause", this._hasPause = 1, He(this, n, Qe(this, e));
     }, r.removePause = function (e) {
       var t = this._first;
       for (e = Qe(this, e); t;) t._start === e && "isPause" === t.data && ze(t), t = t._next;
     }, r.killTweensOf = function (e, t, r) {
-      for (var n = this.getTweensOf(e, r), i = n.length; i--;) Ht !== n[i] && n[i].kill(e, t);
+      for (var n = this.getTweensOf(e, r), i = n.length; i--;) Vt !== n[i] && n[i].kill(e, t);
       return this;
     }, r.getTweensOf = function (e, t) {
-      for (var r, n = [], i = _nt(e), s = this._first, a = I(t); s;) s instanceof Jt ? ye(s._targets, i) && (a ? (!Ht || s._initted && s._ts) && s.globalTime(0) <= t && s.globalTime(s.totalDuration()) > t : !t || s.isActive()) && n.push(s) : (r = s.getTweensOf(i, t)).length && n.push.apply(n, r), s = s._next;
+      for (var r, n = [], i = _nt(e), s = this._first, a = I(t); s;) s instanceof Jt ? ye(s._targets, i) && (a ? (!Vt || s._initted && s._ts) && s.globalTime(0) <= t && s.globalTime(s.totalDuration()) > t : !t || s.isActive()) && n.push(s) : (r = s.getTweensOf(i, t)).length && n.push.apply(n, r), s = s._next;
       return n;
     }, r.tweenTo = function (e, t) {
       t = t || {};
@@ -1307,7 +1307,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
         o = A;
       if (arguments.length) return s.timeScale((s._repeat < 0 ? s.duration() : s.totalDuration()) / (s.reversed() ? -e : e));
       if (s._dirty) {
-        for (n = s.parent; a;) t = a._prev, a._dirty && a.totalDuration(), (r = a._start) > o && s._sort && a._ts && !s._lock ? (s._lock = 1, Ve(s, a, r - a._delay, 1)._lock = 0) : o = r, r < 0 && a._ts && (i -= r, (!n && !s._dp || n && n.smoothChildTiming) && (s._start += r / s._ts, s._time -= r, s._tTime -= r), s.shiftChildren(-r, !1, -Infinity), o = 0), a._end > i && a._ts && (i = a._end), a = t;
+        for (n = s.parent; a;) t = a._prev, a._dirty && a.totalDuration(), (r = a._start) > o && s._sort && a._ts && !s._lock ? (s._lock = 1, He(s, a, r - a._delay, 1)._lock = 0) : o = r, r < 0 && a._ts && (i -= r, (!n && !s._dp || n && n.smoothChildTiming) && (s._start += r / s._ts, s._time -= r, s._tTime -= r), s.shiftChildren(-r, !1, -Infinity), o = 0), a._end > i && a._ts && (i = a._end), a = t;
         Xe(s, s === l && s._time > i ? s._time : i, 1, 1), s._dirty = 0;
       }
       return s._tDur;
@@ -1322,12 +1322,12 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
       }
     }, t;
   }(Yt);
-  Se(Vt.prototype, {
+  Se(Ht.prototype, {
     _lock: 0,
     _hasPause: 0,
     _forcing: 0
   });
-  var Ht,
+  var Vt,
     $t,
     jt = function jt(e, t, r, n, i, s, a) {
       var o,
@@ -1429,7 +1429,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
           if (f = (p = D[o])._gsap || fe(D)[o]._gsap, t._ptLookup[o] = m = {}, oe[f.id] && ae.length && _e(), v = F === D ? o : F.indexOf(p), h && !1 !== (g = new h()).init(p, w || i, t, v, F) && (t._pt = c = new fr(t._pt, p, g.name, 0, 1, g.render, g, 0, g.priority), g._props.forEach(function (e) {
             m[e] = c;
           }), g.priority && (u = 1)), !h || w) for (d in i) le[d] && (g = Xt(d, i, t, v, p, F)) ? g.priority && (u = 1) : m[d] = c = qt.call(t, p, d, "get", i[d], v, F, 0, y.stringFilter);
-          t._op && t._op[o] && t.kill(p, t._op[o]), G && t._pt && (Ht = t, l.killTweensOf(p, m, t.globalTime(r)), b = !t.parent, Ht = 0), t._pt && C && (oe[f.id] = 1);
+          t._op && t._op[o] && t.kill(p, t._op[o]), G && t._pt && (Vt = t, l.killTweensOf(p, m, t.globalTime(r)), b = !t.parent, Vt = 0), t._pt && C && (oe[f.id] = 1);
         }
         u && ur(t), t._onInit && t._onInit(t);
       }
@@ -1484,7 +1484,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
         M = r.parent || l,
         k = (Y(t) || N(t) ? I(t[0]) : "length" in r) ? [t] : _nt(t);
       if (o._targets = k.length ? fe(k) : J("GSAP target " + t + " not found. https://gsap.com", !x.nullTargetWarn) || [], o._ptLookup = [], o._overwrite = T, A || _ || G(w) || G(b)) {
-        if (r = o.vars, (d = o.timeline = new Vt({
+        if (r = o.vars, (d = o.timeline = new Ht({
           data: "nested",
           defaults: S || {},
           targets: M && "nested" === M.data ? M.vars.targets : k
@@ -1517,7 +1517,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
         }
         w || o.duration(w = d.duration());
       } else o.timeline = 0;
-      return !0 !== T || s || (Ht = n(o), l.killTweensOf(k), Ht = 0), Ve(M, n(o), i), r.reversed && o.reverse(), r.paused && o.paused(!0), (y || !w && !A && o._start === we(M._time) && R(y) && De(n(o)) && "nested" !== M.data) && (o._tTime = -1e-8, o.render(Math.max(0, -b) || 0)), E && He(n(o), E), o;
+      return !0 !== T || s || (Vt = n(o), l.killTweensOf(k), Vt = 0), He(M, n(o), i), r.reversed && o.reverse(), r.paused && o.paused(!0), (y || !w && !A && o._start === we(M._time) && R(y) && De(n(o)) && "nested" !== M.data) && (o._tTime = -1e-8, o.render(Math.max(0, -b) || 0)), E && Ve(n(o), E), o;
     }
     i(t, e);
     var r = t.prototype;
@@ -1591,7 +1591,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
       if (void 0 === t && (t = "all"), !(e || t && "all" !== t)) return this._lazy = this._pt = 0, this.parent ? gt(this) : this.scrollTrigger && this.scrollTrigger.kill(!!a), this;
       if (this.timeline) {
         var r = this.timeline.totalDuration();
-        return this.timeline.killTweensOf(e, t, Ht && !0 !== Ht.vars.overwrite)._first || gt(this), this.parent && r !== this.timeline.totalDuration() && Xe(this, this._dur * this.timeline._tDur / r, 0, 1), this;
+        return this.timeline.killTweensOf(e, t, Vt && !0 !== Vt.vars.overwrite)._first || gt(this), this.parent && r !== this.timeline.totalDuration() && Xe(this, this._dur * this.timeline._tDur / r, 0, 1), this;
       }
       var n,
         i,
@@ -1654,7 +1654,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
     _onInit: 0
   }), me("staggerTo,staggerFrom,staggerFromTo", function (e) {
     Jt[e] = function () {
-      var t = new Vt(),
+      var t = new Ht(),
         r = tt.call(arguments, 0);
       return r.splice("staggerFromTo" === e ? 5 : 4, 0, 0), t[e].apply(t, r);
     };
@@ -1719,7 +1719,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
     }();
   me(ue + "parent,duration,ease,delay,overwrite,runBackwards,startAt,yoyo,immediateRender,repeat,repeatDelay,data,paused,reversed,lazy,callbackScope,stringFilter,id,yoyoEase,stagger,inherit,repeatRefresh,keyframes,autoRevert,scrollTrigger", function (e) {
     return se[e] = 1;
-  }), U.TweenMax = U.TweenLite = Jt, U.TimelineLite = U.TimelineMax = Vt, l = new Vt({
+  }), U.TweenMax = U.TweenLite = Jt, U.TimelineLite = U.TimelineMax = Ht, l = new Ht({
     sortChildren: !1,
     defaults: T,
     autoRemoveChildren: !0,
@@ -1796,7 +1796,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
             return t.g - e.g || -1 / 0;
           }).forEach(function (t) {
             return t.t.revert(e);
-          }), i = r.data.length; i--;) (t = r.data[i]) instanceof Vt ? "nested" !== t.data && (t.scrollTrigger && t.scrollTrigger.revert(), t.kill()) : !(t instanceof Jt) && t.revert && t.revert(e);
+          }), i = r.data.length; i--;) (t = r.data[i]) instanceof Ht ? "nested" !== t.data && (t.scrollTrigger && t.scrollTrigger.revert(), t.kill()) : !(t instanceof Jt) && t.revert && t.revert(e);
           r._r.forEach(function (t) {
             return t(e, r);
           }), r.isReverted = !0;
@@ -1841,7 +1841,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
         });
       },
       timeline: function timeline(e) {
-        return new Vt(e);
+        return new Ht(e);
       },
       getTweensOf: function getTweensOf(e, t) {
         return l.getTweensOf(e, t);
@@ -1903,7 +1903,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
           return e && !le[e] && !U[e] && J(t + " effect requires " + e + " plugin.");
         }), de[t] = function (e, t, n) {
           return r(_nt(e), Se(t || {}, i), n);
-        }, s && (Vt.prototype[t] = function (e, r, n) {
+        }, s && (Ht.prototype[t] = function (e, r, n) {
           return this.add(de[t](e, B(r) ? r : (n = r) && {}, this), n);
         });
       },
@@ -1920,9 +1920,9 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
         void 0 === e && (e = {});
         var r,
           n,
-          i = new Vt(e);
-        for (i.smoothChildTiming = R(e.smoothChildTiming), l.remove(i), i._dp = 0, i._time = i._tTime = l._time, r = l._first; r;) n = r._next, !t && !r._dur && r instanceof Jt && r.vars.onComplete === r._targets[0] || Ve(i, r, r._start - r._delay), r = n;
-        return Ve(l, i, 0), i;
+          i = new Ht(e);
+        for (i.smoothChildTiming = R(e.smoothChildTiming), l.remove(i), i._dp = 0, i._time = i._tTime = l._time, r = l._first; r;) n = r._next, !t && !r._dur && r instanceof Jt && r.vars.onComplete === r._targets[0] || He(i, r, r._start - r._delay), r = n;
+        return He(l, i, 0), i;
       },
       context: function context(e, t) {
         return e ? new _r(e, t) : o;
@@ -2029,14 +2029,14 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
       install: Z,
       effects: de,
       ticker: Ct,
-      updateRoot: Vt.updateRoot,
+      updateRoot: Ht.updateRoot,
       plugins: le,
       globalTimeline: l,
       core: {
         PropTween: fr,
         globals: ee,
         Tween: Jt,
-        Timeline: Vt,
+        Timeline: Ht,
         Animation: Yt,
         getCache: he,
         _removeLinkedListItem: Oe,
@@ -2053,7 +2053,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
     };
   me("to,from,fromTo,delayedCall,set,killTweensOf", function (e) {
     return Tr[e] = Jt[e];
-  }), Ct.add(Vt.updateRoot), h = Tr.to({}, {
+  }), Ct.add(Ht.updateRoot), h = Tr.to({}, {
     duration: 0
   });
   var Ar = function Ar(e, t) {
@@ -2099,7 +2099,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
         for (var r = t.length; r--;) this.add(e, r, e[r] || 0, t[r], 0, 0, 0, 0, 0, 1);
       }
     }, Sr("roundProps", ot), Sr("modifiers"), Sr("snap", lt)) || Tr;
-  Jt.version = Vt.version = Er.version = "3.12.7", u = 1, F() && Mt(), kt.Power0, kt.Power1, kt.Power2, kt.Power3, kt.Power4, kt.Linear, kt.Quad, kt.Cubic, kt.Quart, kt.Quint, kt.Strong, kt.Elastic, kt.Back, kt.SteppedEase, kt.Bounce, kt.Sine, kt.Expo, kt.Circ;
+  Jt.version = Ht.version = Er.version = "3.12.7", u = 1, F() && Mt(), kt.Power0, kt.Power1, kt.Power2, kt.Power3, kt.Power4, kt.Linear, kt.Quad, kt.Cubic, kt.Quart, kt.Quint, kt.Strong, kt.Elastic, kt.Back, kt.SteppedEase, kt.Bounce, kt.Sine, kt.Expo, kt.Circ;
   var Cr,
     Mr,
     kr,
@@ -2115,12 +2115,12 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
     Gr = /([A-Z])/g,
     Nr = /(left|right|width|margin|padding|x)/i,
     Yr = /[\s,\(]\S/,
-    Vr = {
+    Hr = {
       autoAlpha: "opacity,visibility",
       scale: "scaleX,scaleY",
       alpha: "opacity"
     },
-    Hr = function Hr(e, t) {
+    Vr = function Vr(e, t) {
       return t.set(t.t, t.p, Math.round(1e4 * (t.s + t.c * e)) / 1e4 + t.u, t);
     },
     $r = function $r(e, t) {
@@ -2167,10 +2167,10 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
         s = i.style,
         a = i._gsap;
       if (t in Dr && s) {
-        if (this.tfm = this.tfm || {}, "transform" === t) return Vr.transform.split(",").forEach(function (t) {
+        if (this.tfm = this.tfm || {}, "transform" === t) return Hr.transform.split(",").forEach(function (t) {
           return e.call(n, t, r);
         });
-        if (~(t = Vr[t] || t).indexOf(",") ? t.split(",").forEach(function (e) {
+        if (~(t = Hr[t] || t).indexOf(",") ? t.split(",").forEach(function (e) {
           return n.tfm[e] = xn(i, e);
         }) : this.tfm[t] = a.x ? a[t] : xn(i, t), t === rn && (this.tfm.zOrigin = a.zOrigin), this.props.indexOf(tn) >= 0) return;
         a.svg && (this.svgo = i.getAttribute("data-svg-origin"), this.props.push(rn, r, "")), t = tn;
@@ -2301,7 +2301,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
     },
     xn = function xn(e, t, r, n) {
       var i;
-      return Pr || un(), t in Vr && "transform" !== t && ~(t = Vr[t]).indexOf(",") && (t = t.split(",")[0]), Dr[t] && "transform" !== t ? (i = Ln(e, n), i = "transformOrigin" !== t ? i[t] : i.svg ? i.origin : In(dn(e, rn)) + " " + i.zOrigin + "px") : (!(i = e.style[t]) || "auto" === i || n || ~(i + "").indexOf("calc(")) && (i = En[t] && En[t](e, t, r) || dn(e, t) || ge(e, t) || ("opacity" === t ? 1 : 0)), r && !~(i + "").trim().indexOf(" ") ? _n(e, t, i, r) + r : i;
+      return Pr || un(), t in Hr && "transform" !== t && ~(t = Hr[t]).indexOf(",") && (t = t.split(",")[0]), Dr[t] && "transform" !== t ? (i = Ln(e, n), i = "transformOrigin" !== t ? i[t] : i.svg ? i.origin : In(dn(e, rn)) + " " + i.zOrigin + "px") : (!(i = e.style[t]) || "auto" === i || n || ~(i + "").indexOf("calc(")) && (i = En[t] && En[t](e, t, r) || dn(e, t) || ge(e, t) || ("opacity" === t ? 1 : 0)), r && !~(i + "").trim().indexOf(" ") ? _n(e, t, i, r) + r : i;
     },
     Tn = function Tn(e, t, r, n) {
       if (!r || "none" === r) {
@@ -2370,7 +2370,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
     },
     Pn = function Pn(e) {
       var t = dn(e, tn);
-      return kn(t) ? Cn : t.substr(7).match(H).map(ve);
+      return kn(t) ? Cn : t.substr(7).match(V).map(ve);
     },
     On = function On(e, t) {
       var r,
@@ -2514,7 +2514,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
         A = parseFloat(p);
       u = parseFloat(u), f = parseFloat(f), (h = parseFloat(h)) && (f += h = parseFloat(h), u += h), u || f ? (u *= Rr, f *= Rr, r = Math.cos(u) * g, n = Math.sin(u) * g, i = Math.sin(u - f) * -m, s = Math.cos(u - f) * m, f && (h *= Rr, a = Math.tan(f - h), i *= a = Math.sqrt(1 + a * a), s *= a, h && (a = Math.tan(h), r *= a = Math.sqrt(1 + a * a), n *= a)), r = ve(r), n = ve(n), i = ve(i), s = ve(s)) : (r = g, s = m, n = i = 0), (T && !~(c + "").indexOf("px") || A && !~(p + "").indexOf("px")) && (T = _n(v, "x", c, "px"), A = _n(v, "y", p, "px")), (w || b || y || _) && (T = ve(T + w - (w * r + b * i) + y), A = ve(A + b - (w * n + b * s) + _)), (l || d) && (a = v.getBBox(), T = ve(T + l / 100 * a.width), A = ve(A + d / 100 * a.height)), a = "matrix(" + r + "," + n + "," + i + "," + s + "," + T + "," + A + ")", v.setAttribute("transform", a), x && (v.style[tn] = a);
     },
-    Vn = function Vn(e, t, r, n, i) {
+    Hn = function Hn(e, t, r, n, i) {
       var s,
         a,
         o = 360,
@@ -2523,7 +2523,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
         c = n + d + "deg";
       return l && ("short" === (s = i.split("_")[1]) && (d %= o) != d % 180 && (d += d < 0 ? o : -360), "cw" === s && d < 0 ? d = (d + 36e9) % o - ~~(d / o) * o : "ccw" === s && d > 0 && (d = (d - 36e9) % o - ~~(d / o) * o)), e._pt = a = new fr(e._pt, t, r, n, d, $r), a.e = c, a.u = "deg", e._props.push(r), a;
     },
-    Hn = function Hn(e, t) {
+    Vn = function Vn(e, t) {
       for (var r in t) e[r] = t[r];
       return e;
     },
@@ -2535,10 +2535,10 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
         o,
         l,
         d,
-        c = Hn({}, r._gsap),
+        c = Vn({}, r._gsap),
         p = r.style;
-      for (i in c.svg ? (s = r.getAttribute("transform"), r.setAttribute("transform", ""), p[tn] = t, n = Ln(r, 1), vn(r, tn), r.setAttribute("transform", s)) : (s = getComputedStyle(r)[tn], p[tn] = t, n = Ln(r, 1), p[tn] = s), Dr) (s = c[i]) !== (a = n[i]) && "perspective,force3D,transformOrigin,svgOrigin".indexOf(i) < 0 && (o = et(s) !== (d = et(a)) ? _n(r, i, s, d) : parseFloat(s), l = parseFloat(a), e._pt = new fr(e._pt, n, i, o, l - o, Hr), e._pt.u = d || 0, e._props.push(i));
-      Hn(n, c);
+      for (i in c.svg ? (s = r.getAttribute("transform"), r.setAttribute("transform", ""), p[tn] = t, n = Ln(r, 1), vn(r, tn), r.setAttribute("transform", s)) : (s = getComputedStyle(r)[tn], p[tn] = t, n = Ln(r, 1), p[tn] = s), Dr) (s = c[i]) !== (a = n[i]) && "perspective,force3D,transformOrigin,svgOrigin".indexOf(i) < 0 && (o = et(s) !== (d = et(a)) ? _n(r, i, s, d) : parseFloat(s), l = parseFloat(a), e._pt = new fr(e._pt, n, i, o, l - o, Vr), e._pt.u = d || 0, e._props.push(i));
+      Vn(n, c);
     };
   me("padding,margin,Width,Radius", function (e, t) {
     var r = "Top",
@@ -2591,8 +2591,8 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
           C = e.style,
           M = r.vars.startAt;
         for (p in Pr || un(), this.styles = this.styles || on(e), y = this.styles.props, this.tween = r, t) if ("autoRound" !== p && (a = t[p], !le[p] || !Xt(p, t, r, n, e, i))) if (d = _typeof(a), c = En[p], "function" === d && (d = _typeof(a = a.call(r, n, e, i))), "string" === d && ~a.indexOf("random(") && (a = pt(a)), c) c(this, e, p, a, r) && (b = 1);else if ("--" === p.substr(0, 2)) s = (getComputedStyle(e).getPropertyValue(p) + "").trim(), a += "", At.lastIndex = 0, At.test(s) || (u = et(s), f = et(a)), f ? u !== f && (s = _n(e, p, s, f) + f) : u && (a += u), this.add(C, "setProperty", s, a, n, i, 0, 0, p), E.push(p), y.push(p, 0, C[p]);else if ("undefined" !== d) {
-          if (M && p in M ? (s = "function" == typeof M[p] ? M[p].call(r, n, e, i) : M[p], z(s) && ~s.indexOf("random(") && (s = pt(s)), et(s + "") || "auto" === s || (s += x.units[p] || et(xn(e, p)) || ""), "=" === (s + "").charAt(1) && (s = xn(e, p))) : s = xn(e, p), l = parseFloat(s), (h = "string" === d && "=" === a.charAt(1) && a.substr(0, 2)) && (a = a.substr(2)), o = parseFloat(a), p in Vr && ("autoAlpha" === p && (1 === l && "hidden" === xn(e, "visibility") && o && (l = 0), y.push("visibility", 0, C.visibility), wn(this, C, "visibility", l ? "inherit" : "hidden", o ? "inherit" : "hidden", !o)), "scale" !== p && "transform" !== p && ~(p = Vr[p]).indexOf(",") && (p = p.split(",")[0])), g = p in Dr) {
-            if (this.styles.save(p), m || ((v = e._gsap).renderTransform && !t.parseTransform || Ln(e, t.parseTransform), w = !1 !== t.smoothOrigin && v.smooth, (m = this._pt = new fr(this._pt, C, tn, 0, 1, v.renderTransform, v, 0, -1)).dep = 1), "scale" === p) this._pt = new fr(this._pt, v, "scaleY", v.scaleY, (h ? be(v.scaleY, h + o) : o) - v.scaleY || 0, Hr), this._pt.u = 0, E.push("scaleY", p), p += "X";else {
+          if (M && p in M ? (s = "function" == typeof M[p] ? M[p].call(r, n, e, i) : M[p], z(s) && ~s.indexOf("random(") && (s = pt(s)), et(s + "") || "auto" === s || (s += x.units[p] || et(xn(e, p)) || ""), "=" === (s + "").charAt(1) && (s = xn(e, p))) : s = xn(e, p), l = parseFloat(s), (h = "string" === d && "=" === a.charAt(1) && a.substr(0, 2)) && (a = a.substr(2)), o = parseFloat(a), p in Hr && ("autoAlpha" === p && (1 === l && "hidden" === xn(e, "visibility") && o && (l = 0), y.push("visibility", 0, C.visibility), wn(this, C, "visibility", l ? "inherit" : "hidden", o ? "inherit" : "hidden", !o)), "scale" !== p && "transform" !== p && ~(p = Hr[p]).indexOf(",") && (p = p.split(",")[0])), g = p in Dr) {
+            if (this.styles.save(p), m || ((v = e._gsap).renderTransform && !t.parseTransform || Ln(e, t.parseTransform), w = !1 !== t.smoothOrigin && v.smooth, (m = this._pt = new fr(this._pt, C, tn, 0, 1, v.renderTransform, v, 0, -1)).dep = 1), "scale" === p) this._pt = new fr(this._pt, v, "scaleY", v.scaleY, (h ? be(v.scaleY, h + o) : o) - v.scaleY || 0, Vr), this._pt.u = 0, E.push("scaleY", p), p += "X";else {
               if ("transformOrigin" === p) {
                 y.push(rn, 0, C[rn]), T = void 0, A = void 0, S = void 0, A = (T = (_ = a).split(" "))[0], S = T[1] || "50%", "top" !== A && "bottom" !== A && "left" !== S && "right" !== S || (_ = A, A = S, S = _), T[0] = An[A] || A, T[1] = An[S] || S, a = T.join(" "), v.svg ? zn(e, a, 0, w, 0, this) : ((f = parseFloat(a.split(" ")[2]) || 0) !== v.zOrigin && wn(this, v, "zOrigin", v.zOrigin, f), wn(this, C, p, In(s), In(a)));
                 continue;
@@ -2602,7 +2602,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
                 continue;
               }
               if (p in Mn) {
-                Vn(this, v, p, l, h ? be(l, h + a) : a);
+                Hn(this, v, p, l, h ? be(l, h + a) : a);
                 continue;
               }
               if ("smoothOrigin" === p) {
@@ -2619,7 +2619,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
               }
             }
           } else p in C || (p = pn(p) || p);
-          if (g || (o || 0 === o) && (l || 0 === l) && !Yr.test(a) && p in C) o || (o = 0), (u = (s + "").substr((l + "").length)) !== (f = et(a) || (p in x.units ? x.units[p] : u)) && (l = _n(e, p, s, f)), this._pt = new fr(this._pt, g ? v : C, p, l, (h ? be(l, h + o) : o) - l, g || "px" !== f && "zIndex" !== p || !1 === t.autoRound ? Hr : qr), this._pt.u = f || 0, u !== f && "%" !== f && (this._pt.b = s, this._pt.r = jr);else if (p in C) Tn.call(this, e, p, s, h ? h + a : a);else if (p in e) this.add(e, p, s || e[p], h ? h + a : a, n, i);else if ("parseTransform" !== p) {
+          if (g || (o || 0 === o) && (l || 0 === l) && !Yr.test(a) && p in C) o || (o = 0), (u = (s + "").substr((l + "").length)) !== (f = et(a) || (p in x.units ? x.units[p] : u)) && (l = _n(e, p, s, f)), this._pt = new fr(this._pt, g ? v : C, p, l, (h ? be(l, h + o) : o) - l, g || "px" !== f && "zIndex" !== p || !1 === t.autoRound ? Vr : qr), this._pt.u = f || 0, u !== f && "%" !== f && (this._pt.b = s, this._pt.r = jr);else if (p in C) Tn.call(this, e, p, s, h ? h + a : a);else if (p in e) this.add(e, p, s || e[p], h ? h + a : a, n, i);else if ("parseTransform" !== p) {
             K(p, a);
             continue;
           }
@@ -2631,9 +2631,9 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
         if (t.tween._time || !Lr()) for (var r = t._pt; r;) r.r(e, r.d), r = r._next;else t.styles.revert();
       },
       get: xn,
-      aliases: Vr,
+      aliases: Hr,
       getSetter: function getSetter(e, t, r) {
-        var n = Vr[t];
+        var n = Hr[t];
         return n && n.indexOf(",") < 0 && (t = n), t in Dr && t !== rn && (e._gsap.x || xn(e, "x")) ? r && zr === r ? "scale" === t ? Kr : Zr : (zr = r || {}) && ("scale" === t ? Jr : en) : e.style && !D(e.style[t]) ? Ur : ~t.indexOf("-") ? Qr : ir(e, t);
       },
       core: {
@@ -2645,9 +2645,9 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
     Dr[e] = 1;
   }), me(jn, function (e) {
     x.units[e] = "deg", Mn[e] = 1;
-  }), Vr[qn[13]] = "x,y,z,scale,scaleX,scaleY,xPercent,yPercent," + jn, me("0:translateX,1:translateY,2:translateZ,8:rotate,8:rotationZ,8:rotateZ,9:rotateX,10:rotateY", function (e) {
+  }), Hr[qn[13]] = "x,y,z,scale,scaleX,scaleY,xPercent,yPercent," + jn, me("0:translateX,1:translateY,2:translateZ,8:rotate,8:rotationZ,8:rotateZ,9:rotateX,10:rotateY", function (e) {
     var t = e.split(":");
-    Vr[t[1]] = qn[t[0]];
+    Hr[t[1]] = qn[t[0]];
   }), me("x,y,z,top,right,bottom,left,width,height,fontSize,padding,margin,perspective", function (e) {
     x.units[e] = "px";
   }), Er.registerPlugin(Xn);
@@ -2849,9 +2849,9 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
         G = e.capture,
         N = e.allowClicks,
         Y = e.lockAxis,
-        V = e.onLockAxis;
+        H = e.onLockAxis;
       this.target = i = Ei(i) || ei, this.vars = e, c && (c = Qn.utils.toArray(c)), t = t || 1e-9, r = r || 0, p = p || 1, F = F || 1, n = n || "wheel,touch,pointer", a = !1 !== a, s || (s = parseFloat(Kn.getComputedStyle(ti).lineHeight) || 22);
-      var H,
+      var V,
         $,
         j,
         q,
@@ -2883,13 +2883,13 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
             r = Q.deltaY = Pi(le),
             n = Math.abs(e) >= t,
             i = Math.abs(r) >= t;
-          A && (n || i) && A(Q, e, r, oe, le), n && (w && Q.deltaX > 0 && w(Q), b && Q.deltaX < 0 && b(Q), x && x(Q), S && Q.deltaX < 0 != Z < 0 && S(Q), Z = Q.deltaX, oe[0] = oe[1] = oe[2] = 0), i && (_ && Q.deltaY > 0 && _(Q), y && Q.deltaY < 0 && y(Q), T && T(Q), E && Q.deltaY < 0 != K < 0 && E(Q), K = Q.deltaY, le[0] = le[1] = le[2] = 0), (q || j) && (k && k(Q), j && (f && 1 === j && f(Q), g && g(Q), j = 0), q = !1), W && !(W = !1) && V && V(Q), X && (I(Q), X = !1), H = 0;
+          A && (n || i) && A(Q, e, r, oe, le), n && (w && Q.deltaX > 0 && w(Q), b && Q.deltaX < 0 && b(Q), x && x(Q), S && Q.deltaX < 0 != Z < 0 && S(Q), Z = Q.deltaX, oe[0] = oe[1] = oe[2] = 0), i && (_ && Q.deltaY > 0 && _(Q), y && Q.deltaY < 0 && y(Q), T && T(Q), E && Q.deltaY < 0 != K < 0 && E(Q), K = Q.deltaY, le[0] = le[1] = le[2] = 0), (q || j) && (k && k(Q), j && (f && 1 === j && f(Q), g && g(Q), j = 0), q = !1), W && !(W = !1) && H && H(Q), X && (I(Q), X = !1), V = 0;
         },
         fe = function fe(e, t, r) {
-          oe[r] += e, le[r] += t, Q._vx.update(e), Q._vy.update(t), a ? H || (H = requestAnimationFrame(ue)) : ue();
+          oe[r] += e, le[r] += t, Q._vx.update(e), Q._vy.update(t), a ? V || (V = requestAnimationFrame(ue)) : ue();
         },
         he = function he(e, t) {
-          Y && !U && (Q.axis = U = Math.abs(e) > Math.abs(t) ? "x" : "y", W = !0), "y" !== U && (oe[2] += e, Q._vx.update(e, !0)), "x" !== U && (le[2] += t, Q._vy.update(t, !0)), a ? H || (H = requestAnimationFrame(ue)) : ue();
+          Y && !U && (Q.axis = U = Math.abs(e) > Math.abs(t) ? "x" : "y", W = !0), "y" !== U && (oe[2] += e, Q._vx.update(e, !0)), "x" !== U && (le[2] += t, Q._vy.update(t, !0)), a ? V || (V = requestAnimationFrame(ue)) : ue();
         },
         ge = function ge(e) {
           if (!pe(e, 1)) {
@@ -2999,8 +2999,8 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
     Gi,
     Ni,
     Yi,
-    Vi,
     Hi,
+    Vi,
     $i,
     ji,
     qi,
@@ -3100,7 +3100,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
     Ys = function Ys(e, t, r) {
       return e && e.progress(t ? 0 : 1) && r && e.pause();
     },
-    Vs = function Vs(e, t) {
+    Hs = function Hs(e, t) {
       if (e.enabled) {
         var r = e._ctx ? e._ctx.add(function () {
           return t(e);
@@ -3108,7 +3108,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
         r && r.totalTime && (e.callbackAnimation = r);
       }
     },
-    Hs = Math.abs,
+    Vs = Math.abs,
     $s = "left",
     js = "right",
     qs = "bottom",
@@ -3287,7 +3287,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
       Gi.appendChild(ds), cs = !rs && ds.offsetHeight || Bi.innerHeight, Gi.removeChild(ds);
     },
     Ba = function Ba(e) {
-      return Vi(".gsap-marker-start, .gsap-marker-end, .gsap-marker-scroller-start, .gsap-marker-scroller-end").forEach(function (t) {
+      return Hi(".gsap-marker-start, .gsap-marker-end, .gsap-marker-scroller-start, .gsap-marker-scroller-end").forEach(function (t) {
         return t.style.display = e ? "none" : "block";
       });
     },
@@ -3341,8 +3341,8 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
       hs = 0;
     },
     Ya = [$s, "top", qs, js, ea + Ks, ea + Us, ea + Zs, ea + Qs, "display", "flexShrink", "float", "zIndex", "gridColumnStart", "gridColumnEnd", "gridRowStart", "gridRowEnd", "gridArea", "justifySelf", "alignSelf", "placeSelf", "order"],
-    Va = Ya.concat([Xs, Ws, "boxSizing", "max" + ta, "max" + ra, "position", ea, Js, Js + Zs, Js + Us, Js + Ks, Js + Qs]),
-    Ha = function Ha(e, t, r, n) {
+    Ha = Ya.concat([Xs, Ws, "boxSizing", "max" + ta, "max" + ra, "position", ea, Js, Js + Zs, Js + Us, Js + Ks, Js + Qs]),
+    Va = function Va(e, t, r, n) {
       if (!e._gsap.swappedIn) {
         for (var i, s = Ya.length, a = t.style, o = e.style; s--;) a[i = Ya[s]] = r[i];
         a.position = "absolute" === r.position ? "absolute" : "relative", "inline" === r.display && (a.display = "inline-block"), o[qs] = o[js] = "auto", a.flexBasis = r.flexBasis || "auto", a.overflow = "visible", a.boxSizing = "border-box", a[Xs] = oa(e, Ai) + na, a[Ws] = oa(e, Si) + na, a[Js] = o[ea] = o.top = o[$s] = "0", ja(n), o[Xs] = o["max" + ta] = r[Xs], o[Ws] = o["max" + ra] = r[Ws], o[Js] = r[Js], e.parentNode !== t && (e.parentNode.insertBefore(t, e), t.appendChild(e)), e._gsap.swappedIn = !0;
@@ -3360,7 +3360,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
       }
     },
     qa = function qa(e) {
-      for (var t = Va.length, r = e.style, n = [], i = 0; i < t; i++) n.push(Va[i], r[Va[i]]);
+      for (var t = Ha.length, r = e.style, n = [], i = 0; i < t; i++) n.push(Ha[i], r[Ha[i]]);
       return n.t = e, n;
     },
     Xa = {
@@ -3482,8 +3482,8 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
             G,
             N,
             Y,
-            V,
             H,
+            V,
             $,
             j = t = sa(Rs(t) || Gs(t) || t.nodeType ? {
               trigger: t
@@ -3565,14 +3565,14 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
             return function (t) {
               return Ii.utils.snap(la(e), t);
             };
-          }(r) : "labelsDirectional" === ae.snapTo ? (V = r, function (e, t) {
-            return da(la(V))(e, t.direction);
+          }(r) : "labelsDirectional" === ae.snapTo ? (H = r, function (e, t) {
+            return da(la(H))(e, t.direction);
           }) : !1 !== ae.directional ? function (e, t) {
             return da(ae.snapTo)(e, bs() - Ce < 500 ? 0 : t.direction);
           } : Ii.utils.snap(ae.snapTo), B = ae.duration || {
             min: .1,
             max: 2
-          }, B = Ns(B) ? Hi(B.min, B.max) : Hi(B, B), R = Ii.delayedCall(ae.delay || D / 2 || .1, function () {
+          }, B = Ns(B) ? Vi(B.min, B.max) : Vi(B, B), R = Ii.delayedCall(ae.delay || D / 2 || .1, function () {
             var e = ke(),
               t = bs() - Ce < 500,
               i = n.tween;
@@ -3582,18 +3582,18 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
                 c = (e - l) / m,
                 p = r && !fe ? r.totalProgress() : c,
                 u = t ? 0 : (p - L) / (bs() - $i) * 1e3 || 0,
-                f = Ii.utils.clamp(-c, 1 - c, Hs(u / 2) * u / .185),
+                f = Ii.utils.clamp(-c, 1 - c, Vs(u / 2) * u / .185),
                 h = c + (!1 === ae.inertia ? 0 : f),
                 g = ae,
                 v = g.onStart,
                 w = g.onInterrupt,
                 b = g.onComplete;
               if (a = s(h, xe), Gs(a) || (a = h), o = Math.max(0, Math.round(l + a * m)), e <= d && e >= l && o !== e) {
-                if (i && !i._initted && i.data <= Hs(o - e)) return;
+                if (i && !i._initted && i.data <= Vs(o - e)) return;
                 !1 === ae.inertia && (f = a - c), n(o, {
-                  duration: B(Hs(.185 * Math.max(Hs(h - p), Hs(a - p)) / u / .05 || 0)),
+                  duration: B(Vs(.185 * Math.max(Vs(h - p), Vs(a - p)) / u / .05 || 0)),
                   ease: ae.ease || "power3",
-                  data: Hs(o - e),
+                  data: Vs(o - e),
                   onInterrupt: function onInterrupt() {
                     return R.restart(!0) && w && w(xe);
                   },
@@ -3608,10 +3608,10 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
             className: X
           }), J && (!1 === ee || ee === ea || (ee = !(!ee && J.parentNode && J.parentNode.style && "flex" === ia(J.parentNode).display) && Js), xe.pin = J, (i = Ii.core.getCache(J)).spacer ? v = i.pinState : (le && ((le = Ei(le)) && !le.nodeType && (le = le.current || le.nativeElement), i.spacerIsNative = !!le, le && (i.spacerState = qa(le))), i.spacer = y = le || Ri.createElement("div"), y.classList.add("pin-spacer"), W && y.classList.add("pin-spacer-" + W), i.pinState = v = qa(J)), !1 !== t.force3D && Ii.set(J, {
             force3D: !0
-          }), xe.spacer = y = i.spacer, O = ia(J), E = O[ee + ue.os2], x = Ii.getProperty(J), T = Ii.quickSetter(J, ue.a, na), Ha(J, y, O), b = qa(J)), ye) {
+          }), xe.spacer = y = i.spacer, O = ia(J), E = O[ee + ue.os2], x = Ii.getProperty(J), T = Ii.quickSetter(J, ue.a, na), Va(J, y, O), b = qa(J)), ye) {
             h = Ns(ye) ? sa(ye, ha) : ha, u = wa("scroller-start", W, he, ue, h, 0), f = wa("scroller-end", W, he, ue, h, 0, u), _ = u["offset" + ue.op.d2];
             var Pe = Ei(mi(he, "content") || he);
-            c = this.markerStart = wa("start", W, Pe, ue, h, _, 0, de), p = this.markerEnd = wa("end", W, Pe, ue, h, _, 0, de), de && (N = Ii.quickSetter([c, p], ue.a, na)), ve || fi.length && !0 === mi(he, "fixedMarkers") || ($ = ia(H = me ? Gi : he).position, H.style.position = "absolute" === $ || "fixed" === $ ? $ : "relative", Ii.set([u, f], {
+            c = this.markerStart = wa("start", W, Pe, ue, h, _, 0, de), p = this.markerEnd = wa("end", W, Pe, ue, h, _, 0, de), de && (N = Ii.quickSetter([c, p], ue.a, na)), ve || fi.length && !0 === mi(he, "fixedMarkers") || ($ = ia(V = me ? Gi : he).position, V.style.position = "absolute" === $ || "fixed" === $ ? $ : "relative", Ii.set([u, f], {
               force3D: !0
             }), M = Ii.quickSetter(u, ue.a, na), P = Ii.quickSetter(f, ue.a, na));
           }
@@ -3640,7 +3640,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
                 i && (i.insertBefore(e, t), i.removeChild(t));
               }
               e._gsap.swappedIn = !1;
-            }(J, y, v) : Ha(J, y, ia(J), C)), n || xe.update(n), qi = i, xe.isReverted = n);
+            }(J, y, v) : Va(J, y, ia(J), C)), n || xe.update(n), qi = i, xe.isReverted = n);
           }, xe.refresh = function (i, s, h, _) {
             if (!qi && xe.enabled || s) if (J && i && _s) pa(e, "scrollEnd", Ma);else {
               !gs && Te && Te(xe), qi = xe, n.tween && !h && (n.tween.kill(), n.tween = 0), I && I.pause(), te && r && r.revert({
@@ -3657,8 +3657,8 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
                 B,
                 N,
                 Y,
-                V,
                 H,
+                V,
                 $ = Ae(),
                 j = Se(),
                 q = de ? de.duration() : Ds(he, ue),
@@ -3671,14 +3671,14 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
                 ie = xe.pinnedContainer = t.pinnedContainer && Ei(t.pinnedContainer, xe),
                 se = K && Math.max(0, ya.indexOf(xe)) || 0,
                 ae = se;
-              for (ye && Ns(h) && (V = Ii.getProperty(u, ue.p), H = Ii.getProperty(f, ue.p)); ae-- > 0;) (z = ya[ae]).end || z.refresh(0, 1) || (qi = xe), !(L = z.pin) || L !== K && L !== J && L !== ie || z.isReverted || (N || (N = []), N.unshift(z), z.revert(!0, !0)), z !== ya[ae] && (se--, ae--);
+              for (ye && Ns(h) && (H = Ii.getProperty(u, ue.p), V = Ii.getProperty(f, ue.p)); ae-- > 0;) (z = ya[ae]).end || z.refresh(0, 1) || (qi = xe), !(L = z.pin) || L !== K && L !== J && L !== ie || z.isReverted || (N || (N = []), N.unshift(z), z.revert(!0, !0)), z !== ya[ae] && (se--, ae--);
               for (Fs(ne) && (ne = ne(xe)), ne = Ts(ne, "start", xe), l = Wa(ne, K, $, ue, ke(), c, u, xe, j, _e, ve, q, de, xe._startClamp && "_startClamp") || (J ? -.001 : 0), Fs(Z) && (Z = Z(xe)), Rs(Z) && !Z.indexOf("+=") && (~Z.indexOf(" ") ? Z = (Rs(ne) ? ne.split(" ")[0] : "") + Z : (W = va(Z.substr(2), $), Z = Rs(ne) ? ne : (de ? Ii.utils.mapRange(0, de.duration(), de.scrollTrigger.start, de.scrollTrigger.end, l) : l) + W, re = K)), Z = Ts(Z, "end", xe), d = Math.max(l, Wa(Z || (re ? "100% 0" : q), re, $, ue, ke() + W, p, f, xe, j, _e, ve, q, de, xe._endClamp && "_endClamp")) || -.001, W = 0, ae = se; ae--;) (L = (z = ya[ae]).pin) && z.start - z._pinPush <= l && !de && z.end > 0 && (T = z.end - (xe._startClamp ? Math.max(0, z.start) : z.start), (L === K && z.start - z._pinPush < l || L === ie) && isNaN(ne) && (W += T * (1 - z.progress)), L === J && (U += T));
               if (l += W, d += W, xe._startClamp && (xe._startClamp += W), xe._endClamp && !gs && (xe._endClamp = d || -.001, d = Math.min(d, Ds(he, ue))), m = d - l || (l -= .01) && .001, X && (Me = Ii.utils.clamp(0, 1, Ii.utils.normalize(l, d, F))), xe._pinPush = U, c && W && ((T = {})[ue.a] = "+=" + W, ie && (T[ue.p] = "-=" + ke()), Ii.set([c, p], T)), !J || us && xe.end >= Ds(he, ue)) {
                 if (K && ke() && !de) for (E = K.parentNode; E && E !== Gi;) E._pinOffset && (l -= E._pinOffset, d -= E._pinOffset), E = E.parentNode;
               } else T = ia(J), P = ue === Si, M = ke(), A = parseFloat(x(ue.a)) + U, !q && d > 1 && (Y = {
                 style: Y = (me ? Ri.scrollingElement || Fi : he).style,
                 value: Y["overflow" + ue.a.toUpperCase()]
-              }, me && "scroll" !== ia(Gi)["overflow" + ue.a.toUpperCase()] && (Y.style["overflow" + ue.a.toUpperCase()] = "scroll")), Ha(J, y, T), b = qa(J), E = aa(J, !0), D = ve && Ci(he, P ? Ai : Si)(), ee ? ((C = [ee + ue.os2, m + U + na]).t = y, (ae = ee === Js ? oa(J, ue) + m + U : 0) && (C.push(ue.d, ae + na), "auto" !== y.style.flexBasis && (y.style.flexBasis = ae + na)), ja(C), ie && ya.forEach(function (e) {
+              }, me && "scroll" !== ia(Gi)["overflow" + ue.a.toUpperCase()] && (Y.style["overflow" + ue.a.toUpperCase()] = "scroll")), Va(J, y, T), b = qa(J), E = aa(J, !0), D = ve && Ci(he, P ? Ai : Si)(), ee ? ((C = [ee + ue.os2, m + U + na]).t = y, (ae = ee === Js ? oa(J, ue) + m + U : 0) && (C.push(ue.d, ae + na), "auto" !== y.style.flexBasis && (y.style.flexBasis = ae + na)), ja(C), ie && ya.forEach(function (e) {
                 e.pin === ie && !1 !== e.vars.pinSpacing && (e._subPinOffset = !0);
               }), ve && ke(F)) : (ae = oa(J, ue)) && "auto" !== y.style.flexBasis && (y.style.flexBasis = ae + na), ve && ((O = {
                 top: E.top + (P ? M - l : D) + na,
@@ -3691,7 +3691,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
               }(v, O, oe), gs && ke(0)), r ? (B = r._initted, es(1), r.render(r.duration(), !0, !0), S = x(ue.a) - A + m + U, k = Math.abs(m - S) > 1, ve && k && w.splice(w.length - 2, 2), r.render(0, !0, !0), B || r.invalidate(!0), r.parent || r.totalTime(r.totalTime()), es(0)) : S = m, Y && (Y.value ? Y.style["overflow" + ue.a.toUpperCase()] = Y.value : Y.style.removeProperty("overflow-" + ue.a));
               N && N.forEach(function (e) {
                 return e.revert(!1, !0);
-              }), xe.start = l, xe.end = d, a = o = gs ? F : ke(), de || gs || (a < F && ke(F), xe.scroll.rec = 0), xe.revert(!1, !0), Ce = bs(), R && (Ee = -1, R.restart(!0)), qi = 0, r && fe && (r._initted || G) && r.progress() !== G && r.progress(G || 0, !0).render(r.time(), !0, !0), (X || Me !== xe.progress || de || te || r && !r._initted) && (r && !fe && r.totalProgress(de && l < -.001 && !Me ? Ii.utils.normalize(l, d, 0) : Me, !0), xe.progress = X || (a - l) / m === Me ? 0 : Me), J && ee && (y._pinOffset = Math.round(xe.progress * S)), I && I.invalidate(), isNaN(V) || (V -= Ii.getProperty(u, ue.p), H -= Ii.getProperty(f, ue.p), Ka(u, ue, V), Ka(c, ue, V - (_ || 0)), Ka(f, ue, H), Ka(p, ue, H - (_ || 0))), X && !gs && xe.update(), !Q || gs || g || (g = !0, Q(xe), g = !1);
+              }), xe.start = l, xe.end = d, a = o = gs ? F : ke(), de || gs || (a < F && ke(F), xe.scroll.rec = 0), xe.revert(!1, !0), Ce = bs(), R && (Ee = -1, R.restart(!0)), qi = 0, r && fe && (r._initted || G) && r.progress() !== G && r.progress(G || 0, !0).render(r.time(), !0, !0), (X || Me !== xe.progress || de || te || r && !r._initted) && (r && !fe && r.totalProgress(de && l < -.001 && !Me ? Ii.utils.normalize(l, d, 0) : Me, !0), xe.progress = X || (a - l) / m === Me ? 0 : Me), J && ee && (y._pinOffset = Math.round(xe.progress * S)), I && I.invalidate(), isNaN(H) || (H -= Ii.getProperty(u, ue.p), V -= Ii.getProperty(f, ue.p), Ka(u, ue, H), Ka(c, ue, H - (_ || 0)), Ka(f, ue, V), Ka(p, ue, V - (_ || 0))), X && !gs && xe.update(), !Q || gs || g || (g = !0, Q(xe), g = !1);
             }
           }, xe.getVelocity = function () {
             return (ke() - o) / (bs() - $i) * 1e3 || 0;
@@ -3733,9 +3733,9 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
                     ja(s || g ? w : b), k && C < 1 && s || T(A + (1 !== C || g ? 0 : S));
                   }
                 } else T(ks(A + S * C));
-                ae && !n.tween && !qi && !ws && R.restart(!0), X && (h || se && C && (C < 1 || !fs)) && Vi(X.targets).forEach(function (e) {
+                ae && !n.tween && !qi && !ws && R.restart(!0), X && (h || se && C && (C < 1 || !fs)) && Hi(X.targets).forEach(function (e) {
                   return e.classList[s || se ? "add" : "remove"](X.className);
-                }), q && !fe && !e && q(xe), f && !qi ? (fe && (v && ("complete" === p ? r.pause().totalProgress(1) : "reset" === p ? r.restart(!0).pause() : "restart" === p ? r.restart(!0) : r[p]()), q && q(xe)), !h && fs || (U && h && Vs(xe, U), we[c] && Vs(xe, we[c]), se && (1 === C ? xe.kill(!1, 1) : we[c] = 0), h || we[c = 1 === C ? 1 : 3] && Vs(xe, we[c])), ce && !s && Math.abs(xe.getVelocity()) > (Gs(ce) ? ce : 2500) && (Ys(xe.callbackAnimation), I ? I.progress(1) : Ys(r, "reverse" === p ? 1 : !C, 1))) : fe && q && !qi && q(xe);
+                }), q && !fe && !e && q(xe), f && !qi ? (fe && (v && ("complete" === p ? r.pause().totalProgress(1) : "reset" === p ? r.restart(!0).pause() : "restart" === p ? r.restart(!0) : r[p]()), q && q(xe)), !h && fs || (U && h && Hs(xe, U), we[c] && Hs(xe, we[c]), se && (1 === C ? xe.kill(!1, 1) : we[c] = 0), h || we[c = 1 === C ? 1 : 3] && Hs(xe, we[c])), ce && !s && Math.abs(xe.getVelocity()) > (Gs(ce) ? ce : 2500) && (Ys(xe.callbackAnimation), I ? I.progress(1) : Ys(r, "reverse" === p ? 1 : !C, 1))) : fe && q && !qi && q(xe);
               }
               if (P) {
                 var G = de ? _ / de.duration() * (de._caScrollDist || 0) : _;
@@ -3806,7 +3806,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
         }), ua(Bi, "wheel", Ta), ua(Ri, "scroll", Ta), clearInterval(ji), ua(Ri, "touchcancel", Ms), ua(Gi, "touchstart", Ms), ca(ua, Ri, "pointerdown,touchstart,mousedown", Es), ca(ua, Ri, "pointerup,touchend,mouseup", Cs), Yi.kill(), Bs(ua);
         for (var r = 0; r < ui.length; r += 3) fa(ua, ui[r], ui[r + 1]), fa(ua, ui[r], ui[r + 2]);
       }, e.enable = function () {
-        if (Bi = window, Ri = document, Fi = Ri.documentElement, Gi = Ri.body, Ii && (Vi = Ii.utils.toArray, Hi = Ii.utils.clamp, os = Ii.core.context || Ms, es = Ii.core.suppressOverwrites || Ms, ls = Bi.history.scrollRestoration || "auto", Fa = Bi.pageYOffset || 0, Ii.core.globals("ScrollTrigger", e), Gi)) {
+        if (Bi = window, Ri = document, Fi = Ri.documentElement, Gi = Ri.body, Ii && (Hi = Ii.utils.toArray, Vi = Ii.utils.clamp, os = Ii.core.context || Ms, es = Ii.core.suppressOverwrites || Ms, ls = Bi.history.scrollRestoration || "auto", Fa = Bi.pageYOffset || 0, Ii.core.globals("ScrollTrigger", e), Gi)) {
           xs = 1, (ds = document.createElement("div")).style.height = "100vh", ds.style.position = "absolute", Da(), Ss(), Li.register(Ii), e.isTouch = Li.isTouch, as = Li.isTouch && /(iPad|iPhone|iPod|Mac)/g.test(navigator.userAgent), ns = 1 === Li.isTouch, pa(Bi, "wheel", Ta), Ni = [Bi, Ri, Fi, Gi], Ii.matchMedia ? (e.matchMedia = function (e) {
             var t,
               r = Ii.matchMedia();
@@ -3833,7 +3833,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
             }
           }), i.borderTopStyle = "solid", t = aa(Gi), Si.m = Math.round(t.top + Si.sc()) || 0, Ai.m = Math.round(t.left + Ai.sc()) || 0, s ? i.borderTopStyle = s : i.removeProperty("border-top-style"), n || (Gi.setAttribute("style", ""), Gi.removeAttribute("style")), ji = setInterval(xa, 250), Ii.delayedCall(.5, function () {
             return ws = 0;
-          }), pa(Ri, "touchcancel", Ms), pa(Gi, "touchstart", Ms), ca(pa, Ri, "pointerdown,touchstart,mousedown", Es), ca(pa, Ri, "pointerup,touchend,mouseup", Cs), Wi = Ii.utils.checkPrefix("transform"), Va.push(Wi), Di = bs(), Yi = Ii.delayedCall(.2, Ra).pause(), Ki = [Ri, "visibilitychange", function () {
+          }), pa(Ri, "touchcancel", Ms), pa(Gi, "touchstart", Ms), ca(pa, Ri, "pointerdown,touchstart,mousedown", Es), ca(pa, Ri, "pointerup,touchend,mouseup", Cs), Wi = Ii.utils.checkPrefix("transform"), Ha.push(Wi), Di = bs(), Yi = Ii.delayedCall(.2, Ra).pause(), Ki = [Ri, "visibilitychange", function () {
             var e = Bi.innerWidth,
               t = Bi.innerHeight;
             Ri.hidden ? (Qi = e, Zi = t) : Qi === e && Zi === t || Sa();
@@ -3876,7 +3876,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
       }, e;
     }();
   eo.version = "3.12.7", eo.saveStyles = function (e) {
-    return e ? Vi(e).forEach(function (e) {
+    return e ? Hi(e).forEach(function (e) {
       if (e && e.style) {
         var t = Pa.indexOf(e);
         t >= 0 && Pa.splice(t, 5), Pa.push(e, e.style.cssText, e.getBBox && e.getAttribute("transform"), Ii.core.getCache(e), os());
@@ -3928,7 +3928,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
     for (r in t) i[r] = "on" === r.substr(0, 2) && Fs(t[r]) && "onRefreshInit" !== r ? o(0, t[r]) : t[r];
     return Fs(a) && (a = a(), pa(eo, "refresh", function () {
       return a = t.batchMax();
-    })), Vi(e).forEach(function (e) {
+    })), Hi(e).forEach(function (e) {
       var t = {};
       for (r in i) t[r] = i[r];
       t.trigger = e, n.push(eo.create(t));
@@ -4045,7 +4045,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
         E = Ms,
         C = Ms,
         M = function M() {
-          r = Ds(h, Si), C = Hi(as ? 1 : 0, r), c && (E = Hi(0, Ds(h, Ai))), n = Ia;
+          r = Ds(h, Si), C = Vi(as ? 1 : 0, r), c && (E = Vi(0, Ds(h, Ai))), n = Ia;
         },
         k = function k() {
           v._gsap.y = ks(parseFloat(v._gsap.y) + w.offset) + "px", v.style.transform = "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, " + parseFloat(v._gsap.y) + ", 0, 1)", w.offset = w.cacheID = 0;
@@ -4490,7 +4490,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
       var r = e.slides[t].querySelector('[loading="lazy"]');
       r && r.removeAttribute("loading");
     },
-    Vo = function Vo(e) {
+    Ho = function Ho(e) {
       if (!e || e.destroyed || !e.params) return;
       var t = e.params.lazyPreloadPrevNext;
       var r = e.slides.length;
@@ -4515,7 +4515,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
         (_t5 < i || _t5 > s) && Yo(e, _t5);
       } else for (var _n7 = Math.max(i - t, 0); _n7 <= Math.min(s + t, r - 1); _n7 += 1) _n7 !== i && (_n7 > s || _n7 < i) && Yo(e, _n7);
     };
-  var Ho = {
+  var Vo = {
       updateSize: function updateSize() {
         var e = this;
         var t, r;
@@ -4843,7 +4843,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
           realIndex: u,
           previousIndex: s,
           activeIndex: d
-        }), t.initialized && Vo(t), t.emit("activeIndexChange"), t.emit("snapIndexChange"), (t.initialized || t.params.runCallbacksOnInit) && (a !== u && t.emit("realIndexChange"), t.emit("slideChange"));
+        }), t.initialized && Ho(t), t.emit("activeIndexChange"), t.emit("snapIndexChange"), (t.initialized || t.params.runCallbacksOnInit) && (a !== u && t.emit("realIndexChange"), t.emit("slideChange"));
       },
       updateClickedSlide: function updateClickedSlide(e, t) {
         var r = this,
@@ -5869,7 +5869,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
   }
   var ul = {
       eventsEmitter: Ro,
-      update: Ho,
+      update: Vo,
       translate: $o,
       transition: qo,
       slide: Xo,
@@ -6175,7 +6175,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
           e.complete ? No(t, e) : e.addEventListener("load", function (e) {
             No(t, e.target);
           });
-        }), Vo(t), t.initialized = !0, Vo(t), t.emit("init"), t.emit("afterInit"), t;
+        }), Ho(t), t.initialized = !0, Ho(t), t.emit("init"), t.emit("afterInit"), t;
       }
     }, {
       key: "destroy",
@@ -6982,5 +6982,10 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
           return _context2.stop();
       }
     }, _callee2, null, [[1, 16]]);
-  })));
+  }))), document.addEventListener("DOMContentLoaded", function () {
+    var e = document.querySelector(".footer");
+    window.addEventListener("scroll", function () {
+      window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50 ? e.classList.add("visible") : e.classList.remove("visible");
+    });
+  });
 })();

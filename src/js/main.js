@@ -13,22 +13,22 @@ const slidesData = [
   {
     title: "Slide 1",
     description: "Lorem ipsum...",
-    image: "images/heroImage.jpg",
+    image: "../images/heroImage.jpg",
   },
   {
     title: "Slide 2",
     description: "Consectetur adipiscing...",
-    image: "images/heroImage.jpg",
+    image: "../images/heroImage.jpg",
   },
   {
     title: "Slide 3",
     description: "Sed do eiusmod...",
-    image: "images/heroImage.jpg",
+    image: "../images/heroImage.jpg",
   },
   {
     title: "",
     description: "Tempor incididunt...",
-    image: "images/heroImage.jpg",
+    image: "../images/heroImage.jpg",
   },
 ];
 
@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-/*----rotator-----*/
+//rotator
 
 document.addEventListener("DOMContentLoaded", async () => {
   const rotatorImagesContainer = document.querySelector(".rotator-images");
@@ -208,4 +208,22 @@ document.addEventListener("DOMContentLoaded", async () => {
   } catch (error) {
     console.error("Eroare la preluarea produselor:", error);
   }
+});
+
+//footer
+document.addEventListener("DOMContentLoaded", function () {
+  const footer = document.querySelector(".footer");
+
+  function toggleFooterVisibility() {
+      const scrollPosition = window.innerHeight + window.scrollY;
+      const pageHeight = document.documentElement.scrollHeight;
+
+      if (scrollPosition >= pageHeight - 50) { 
+          footer.classList.add("visible");
+      } else {
+          footer.classList.remove("visible");
+      }
+  }
+
+  window.addEventListener("scroll", toggleFooterVisibility);
 });
