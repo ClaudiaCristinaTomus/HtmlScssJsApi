@@ -341,4 +341,15 @@ h2 {
   .rotator-description {
     display: none;
   }
+}
+.footer {
+  background-color: #283454;
+  padding: 30px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer .arrow-footer {
+  width: auto;
+  height: auto;
 }/*# sourceMappingURL=style.css.map */
