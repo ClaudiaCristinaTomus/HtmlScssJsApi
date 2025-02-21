@@ -40,6 +40,11 @@ function styles() {
     .pipe(bs.stream());
 }
 
+function fonts() {
+  return gulp.src("src/fonts/**/*.{ttf,otf,woff,woff2}")
+    .pipe(gulp.dest("dist/fonts"));
+}
+
 function scripts() {
   return gulp
     .src("src/js/main.js")
@@ -80,7 +85,7 @@ function serve() {
 
 const build = gulp.series(
   ensureImagesFolder,
-  gulp.parallel(styles, scripts, html, images)
+  gulp.parallel(styles, scripts, html, images, fonts)
 );
 export default gulp.series(build, serve);
 export { build };
